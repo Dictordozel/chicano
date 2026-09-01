@@ -33,9 +33,9 @@
 			</span>
 
 			<div class="min-w-0 flex-1">
-				<p class="display text-[0.7rem] leading-tight">{toast.title}</p>
+				<p class="display text-[0.85rem] leading-tight">{toast.title}</p>
 				{#if toast.body}
-					<p class="mt-1 text-[0.8rem] leading-snug text-zinc-400">{toast.body}</p>
+					<p class="mt-1 text-[0.95rem] leading-snug text-zinc-400">{toast.body}</p>
 				{/if}
 			</div>
 

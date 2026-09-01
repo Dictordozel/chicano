@@ -48,7 +48,7 @@
 
 <section class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-20">
 	<div class="text-center">
-		<p class="display text-[0.6rem] text-gold">Take the shop home</p>
+		<p class="display text-[0.8rem] text-gold">Take the shop home</p>
 		<h1 class="gothic mt-3 text-4xl text-zinc-100 sm:text-6xl">The counter</h1>
 		<p class="mx-auto mt-4 max-w-md text-sm leading-relaxed text-zinc-500">
 			Pomades, clays, oils and balms — the same tins we reach for behind the chair.
@@ -63,7 +63,7 @@
 				type="button"
 				onclick={() => (filter = chip.key)}
 				aria-pressed={filter === chip.key}
-				class="display shrink-0 snap-start border px-4 py-2.5 text-[0.6rem] transition-colors {filter ===
+				class="display shrink-0 snap-start border px-4 py-2.5 text-[0.8rem] transition-colors {filter ===
 				chip.key
 					? 'border-gold bg-gold text-black'
 					: 'border-zinc-800 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200'}"
@@ -88,21 +88,21 @@
 
 					<div class="p-5">
 						<div class="flex items-start justify-between gap-3">
-							<span class="display text-[0.52rem] text-zinc-600">{product.brand}</span>
+							<span class="display text-[0.75rem] text-zinc-600">{product.brand}</span>
 							{#if product.badge}
-								<span class="display border border-gold/40 px-2 py-0.5 text-[0.5rem] text-gold">
+								<span class="display border border-gold/40 px-2 py-0.5 text-[0.7rem] text-gold">
 									{product.badge}
 								</span>
 							{/if}
 						</div>
 
 						<h2
-							class="mt-3 text-[0.95rem] leading-snug font-medium text-zinc-100 transition-colors group-hover:text-gold"
+							class="mt-3 text-[1.05rem] leading-snug font-medium text-zinc-100 transition-colors group-hover:text-gold"
 						>
 							{product.title}
 						</h2>
 
-						<p class="mt-2 line-clamp-2 text-[0.8rem] leading-relaxed text-zinc-500">
+						<p class="mt-2 line-clamp-2 text-[0.95rem] leading-relaxed text-zinc-500">
 							{product.description}
 						</p>
 					</div>
@@ -112,12 +112,12 @@
 					<div>
 						<span class="gothic text-2xl text-gold tabular-nums">{product.price} ₽</span>
 						{#if product.volume}
-							<span class="ml-1.5 text-[0.7rem] text-zinc-600">/ {product.volume}</span>
+							<span class="ml-1.5 text-[0.85rem] text-zinc-600">/ {product.volume}</span>
 						{/if}
 					</div>
 
 					{#if data.inCart[product.id]}
-						<span class="display flex items-center gap-1.5 text-[0.55rem] text-gold">
+						<span class="display flex items-center gap-1.5 text-[0.75rem] text-gold">
 							<Icon name="check" size="13" stroke={2} />
 							{data.inCart[product.id]} in cart
 						</span>
@@ -129,7 +129,7 @@
 						href={product.url}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="display flex items-center justify-center gap-1.5 border-r border-zinc-800 py-3.5 text-[0.55rem] text-zinc-400 transition-colors hover:bg-zinc-900/60 hover:text-gold"
+						class="display flex items-center justify-center gap-1.5 border-r border-zinc-800 py-3.5 text-[0.75rem] text-zinc-400 transition-colors hover:bg-zinc-900/60 hover:text-gold"
 					>
 						Купить на Ozon
 						<Icon name="external" size="12" />
@@ -139,7 +139,7 @@
 						<input type="hidden" name="productId" value={product.id} />
 						<button
 							type="submit"
-							class="display flex w-full items-center justify-center gap-1.5 py-3.5 text-[0.55rem] text-gold transition-colors hover:bg-gold hover:text-black"
+							class="display flex w-full items-center justify-center gap-1.5 py-3.5 text-[0.75rem] text-gold transition-colors hover:bg-gold hover:text-black"
 						>
 							<Icon name="plus" size="12" stroke={2} />
 							В корзину
@@ -154,7 +154,7 @@
 		<p class="mt-16 text-center text-sm text-zinc-500">Nothing on this shelf yet.</p>
 	{/if}
 
-	<p class="mt-12 text-center text-[0.72rem] leading-relaxed text-zinc-600">
+	<p class="mt-12 text-center text-[0.9rem] leading-relaxed text-zinc-600">
 		Prototype notice — “В корзину” simulates an order inside the app.
 		“Купить на Ozon” opens the marketplace listing in a new tab.
 	</p>
@@ -195,9 +195,9 @@
 
 			<div class="p-6 sm:p-8">
 				<div class="flex items-center justify-between gap-3">
-					<span class="display text-[0.55rem] text-zinc-500">{open.brand}</span>
+					<span class="display text-[0.75rem] text-zinc-500">{open.brand}</span>
 					{#if open.badge}
-						<span class="display border border-gold/40 px-2 py-0.5 text-[0.5rem] text-gold">
+						<span class="display border border-gold/40 px-2 py-0.5 text-[0.7rem] text-gold">
 							{open.badge}
 						</span>
 					{/if}
@@ -211,11 +211,11 @@
 
 				<dl class="mt-6 grid grid-cols-2 gap-4 border-y border-zinc-800 py-5 text-sm">
 					<div>
-						<dt class="display text-[0.55rem] text-zinc-500">Price</dt>
+						<dt class="display text-[0.75rem] text-zinc-500">Price</dt>
 						<dd class="gothic mt-1 text-3xl text-gold tabular-nums">{open.price} ₽</dd>
 					</div>
 					<div>
-						<dt class="display text-[0.55rem] text-zinc-500">Volume</dt>
+						<dt class="display text-[0.75rem] text-zinc-500">Volume</dt>
 						<dd class="mt-1 text-zinc-200">{open.volume ?? '—'}</dd>
 					</div>
 				</dl>
@@ -242,7 +242,7 @@
 
 				<a
 					href="/cart"
-					class="display mt-4 block text-center text-[0.55rem] text-zinc-500 transition-colors hover:text-gold"
+					class="display mt-4 block text-center text-[0.75rem] text-zinc-500 transition-colors hover:text-gold"
 				>
 					Go to cart →
 				</a>

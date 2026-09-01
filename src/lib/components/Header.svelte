@@ -48,7 +48,7 @@
 		<a href="/" class="group flex items-baseline gap-2" aria-label="Chicano Barbershop, home">
 			<span class="gothic foil text-2xl leading-none sm:text-3xl">Chicano</span>
 			<span
-				class="display hidden text-[0.55rem] text-zinc-600 transition-colors group-hover:text-gold sm:inline"
+				class="display hidden text-[0.75rem] text-zinc-600 transition-colors group-hover:text-gold sm:inline"
 			>
 				Est. 1974
 			</span>
@@ -59,7 +59,7 @@
 			{#each links as link (link.href)}
 				<a
 					href={link.href}
-					class="display relative py-1 text-[0.65rem] transition-colors {isActive(link.href)
+					class="display relative py-1 text-[0.85rem] transition-colors {isActive(link.href)
 						? 'text-gold'
 						: 'text-zinc-400 hover:text-zinc-100'}"
 					aria-current={isActive(link.href) ? 'page' : undefined}
@@ -82,7 +82,7 @@
 				<Icon name="cart" size="19" />
 				{#if cartCount > 0}
 					<span
-						class="absolute top-1 right-0.5 flex h-4 min-w-4 items-center justify-center bg-gold px-1 text-[0.6rem] font-semibold text-black tabular-nums"
+						class="absolute top-1 right-0.5 flex h-4 min-w-4 items-center justify-center bg-gold px-1 text-[0.8rem] font-semibold text-black tabular-nums"
 					>
 						{cartCount}
 					</span>
@@ -98,7 +98,7 @@
 						title="Sign out {user.name}"
 					>
 						<Icon name="user" size="16" />
-						<span class="display max-w-24 truncate text-[0.6rem]">{user.name}</span>
+						<span class="display max-w-24 truncate text-[0.8rem]">{user.name}</span>
 					</button>
 				</form>
 			{:else}
@@ -139,7 +139,7 @@
 			{#each links as link (link.href)}
 				<a
 					href={link.href}
-					class="display flex items-center justify-between border-b border-zinc-900 py-4 text-[0.75rem] transition-colors {isActive(
+					class="display flex items-center justify-between border-b border-zinc-900 py-4 text-[0.9rem] transition-colors {isActive(
 						link.href
 					)
 						? 'text-gold'

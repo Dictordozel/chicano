@@ -57,14 +57,14 @@
 
 <div id="editor" class="card p-6 {editing ? 'border-gold/50' : ''}">
 	<div class="flex items-center justify-between gap-3">
-		<h2 class="display flex items-center gap-2 text-[0.62rem] text-gold">
+		<h2 class="display flex items-center gap-2 text-[0.8rem] text-gold">
 			<Icon name={editing ? 'calendar' : 'plus'} size="14" stroke={2} />
 			{editing ? 'Edit booking' : 'New booking'}
 		</h2>
 		{#if editing}
 			<a
 				href="/admin/appointments"
-				class="display text-[0.5rem] text-zinc-500 transition-colors hover:text-zinc-200"
+				class="display text-[0.7rem] text-zinc-500 transition-colors hover:text-zinc-200"
 			>
 				Cancel
 			</a>
@@ -72,7 +72,7 @@
 	</div>
 
 	{#if editing}
-		<p class="mt-2 truncate text-[0.7rem] text-zinc-600">
+		<p class="mt-2 truncate text-[0.85rem] text-zinc-600">
 			#{editing.id} · {editing.status}{editing.price ? ` · quoted ${editing.price} ₽` : ''}
 		</p>
 	{/if}
@@ -152,7 +152,7 @@
 			{#if errors.date}
 				<p class="mt-1.5 text-xs text-flash">{errors.date}</p>
 			{:else}
-				<p class="mt-1.5 text-[0.7rem] text-zinc-600">
+				<p class="mt-1.5 text-[0.85rem] text-zinc-600">
 					{#if known}
 						{free.length} of {slots.length} slots free
 					{:else}
@@ -190,7 +190,7 @@
 		</button>
 
 		{#if editing}
-			<p class="text-center text-[0.68rem] leading-relaxed text-zinc-600">
+			<p class="text-center text-[0.85rem] leading-relaxed text-zinc-600">
 				Moving the day, time or barber keeps the price the client was quoted.
 			</p>
 		{/if}

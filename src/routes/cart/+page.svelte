@@ -50,7 +50,7 @@
 
 <section class="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-20">
 	<div class="text-center">
-		<p class="display text-[0.6rem] text-gold">Simulated order</p>
+		<p class="display text-[0.8rem] text-gold">Simulated order</p>
 		<h1 class="gothic mt-3 text-4xl text-zinc-100 sm:text-5xl">Your cart</h1>
 		<Ornament icon="bag" class="mx-auto mt-6 max-w-xs" />
 	</div>
@@ -92,11 +92,11 @@
 					</div>
 
 					<div class="min-w-0 flex-1">
-						<p class="display text-[0.52rem] text-zinc-600">{item.brand}</p>
-						<h2 class="mt-1.5 text-[0.9rem] leading-snug font-medium text-zinc-100">
+						<p class="display text-[0.75rem] text-zinc-600">{item.brand}</p>
+						<h2 class="mt-1.5 text-[1rem] leading-snug font-medium text-zinc-100">
 							{item.title}
 						</h2>
-						<p class="mt-1 text-[0.72rem] text-zinc-600">
+						<p class="mt-1 text-[0.9rem] text-zinc-600">
 							{item.price} ₽{item.volume ? ` · ${item.volume}` : ''}
 						</p>
 
@@ -134,7 +134,7 @@
 								<input type="hidden" name="productId" value={item.id} />
 								<button
 									type="submit"
-									class="display flex items-center gap-1.5 text-[0.55rem] text-zinc-600 transition-colors hover:text-flash"
+									class="display flex items-center gap-1.5 text-[0.75rem] text-zinc-600 transition-colors hover:text-flash"
 								>
 									<Icon name="trash" size="12" />
 									Remove
@@ -145,7 +145,7 @@
 								href={item.url}
 								target="_blank"
 								rel="noopener noreferrer"
-								class="display flex items-center gap-1.5 text-[0.55rem] text-zinc-600 transition-colors hover:text-gold"
+								class="display flex items-center gap-1.5 text-[0.75rem] text-zinc-600 transition-colors hover:text-gold"
 							>
 								Ozon
 								<Icon name="external" size="11" />
@@ -163,7 +163,7 @@
 		<!-- ------------------------------------------------------ totals -->
 		<div class="mt-8 flex items-end justify-between gap-6">
 			<div>
-				<p class="display text-[0.55rem] text-zinc-500">Total</p>
+				<p class="display text-[0.75rem] text-zinc-500">Total</p>
 				<p class="gothic mt-1 text-4xl text-gold tabular-nums">{data.total} ₽</p>
 			</div>
 
@@ -177,16 +177,16 @@
 
 		{#if !data.user}
 			<p
-				class="mt-6 flex flex-wrap items-center justify-between gap-3 border border-zinc-800 bg-zinc-900/30 px-4 py-3.5 text-[0.8rem] text-zinc-400"
+				class="mt-6 flex flex-wrap items-center justify-between gap-3 border border-zinc-800 bg-zinc-900/30 px-4 py-3.5 text-[0.95rem] text-zinc-400"
 			>
 				<span>You need an account to finish the order.</span>
-				<a href="/login?next=/cart" class="display text-[0.55rem] text-gold hover:underline">
+				<a href="/login?next=/cart" class="display text-[0.75rem] text-gold hover:underline">
 					Sign in →
 				</a>
 			</p>
 		{/if}
 
-		<p class="mt-6 text-center text-[0.72rem] text-zinc-600">
+		<p class="mt-6 text-center text-[0.9rem] text-zinc-600">
 			Prototype notice — no payment is taken. The order is written to SQLite and the cart is emptied.
 		</p>
 	{/if}

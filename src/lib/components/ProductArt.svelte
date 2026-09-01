@@ -60,7 +60,7 @@
 	</svg>
 
 	<span
-		class="display absolute top-3 left-3 text-[0.5rem] tracking-[0.2em] text-zinc-600 uppercase"
+		class="display absolute top-3 left-3 text-[0.7rem] tracking-[0.2em] text-zinc-600 uppercase"
 	>
 		{category}
 	</span>

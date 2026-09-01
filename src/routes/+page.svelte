@@ -32,7 +32,7 @@
 	></div>
 
 	<div class="relative mx-auto max-w-6xl px-4 pt-16 pb-20 sm:px-6 sm:pt-24 sm:pb-28">
-		<p class="display flex items-center gap-3 text-[0.6rem] text-gold">
+		<p class="display flex items-center gap-3 text-[0.8rem] text-gold">
 			<span class="h-px w-8 bg-gold"></span>
 			Est. 1974 · East Side
 		</p>
@@ -42,13 +42,13 @@
 				Chicano
 			</span>
 			<span
-				class="display mt-4 block text-[0.8rem] leading-relaxed text-zinc-300 sm:text-base lg:text-lg"
+				class="display mt-4 block text-[0.95rem] leading-relaxed text-zinc-300 sm:text-base lg:text-lg"
 			>
 				Barbershop &amp; Straight-razor parlour
 			</span>
 		</h1>
 
-		<p class="mt-7 max-w-lg text-[0.95rem] leading-relaxed text-zinc-400 sm:text-base">
+		<p class="mt-7 max-w-lg text-[1.05rem] leading-relaxed text-zinc-400 sm:text-base">
 			Comb-backs, skin fades and beard work done the way it was done before appointments existed —
 			slowly, with steel, and with the radio on.
 		</p>
@@ -69,7 +69,7 @@
 			{#each [{ n: '4', l: 'Master barbers' }, { n: '50', l: 'Years on the block' }, { n: '11', l: 'Chairs a day' }] as fact (fact.l)}
 				<div>
 					<dt class="gothic text-3xl text-gold sm:text-4xl">{fact.n}</dt>
-					<dd class="display mt-1 text-[0.55rem] leading-relaxed text-zinc-500">{fact.l}</dd>
+					<dd class="display mt-1 text-[0.75rem] leading-relaxed text-zinc-500">{fact.l}</dd>
 				</div>
 			{/each}
 		</dl>
@@ -81,7 +81,7 @@
 	<div class="flex w-max animate-[slide_38s_linear_infinite] items-center gap-8 pr-8">
 		{#each [0, 1] as pass (pass)}
 			{#each marquee as word (pass + word)}
-				<span class="display flex items-center gap-8 text-[0.6rem] text-zinc-600">
+				<span class="display flex items-center gap-8 text-[0.8rem] text-zinc-600">
 					{word}
 					<Icon name="flash" size="11" class="text-gold/50" />
 				</span>
@@ -93,7 +93,7 @@
 <!-- ========================================================= SERVICES -->
 <section id="services" class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
 	<div class="text-center">
-		<p class="display text-[0.6rem] text-gold">The price list</p>
+		<p class="display text-[0.8rem] text-gold">The price list</p>
 		<h2 class="gothic mt-3 text-4xl text-zinc-100 sm:text-6xl">Services</h2>
 		<Ornament icon="scissors" class="mx-auto mt-6 max-w-xs" />
 	</div>
@@ -104,7 +104,7 @@
 				<div class="flex items-center gap-3 border-b border-zinc-800 pb-4">
 					<span class="text-gold"><Icon name={group.icon} size="22" /></span>
 					<div>
-						<h3 class="display text-[0.75rem] text-zinc-100">{group.title}</h3>
+						<h3 class="display text-[0.9rem] text-zinc-100">{group.title}</h3>
 						<p class="mt-1 text-xs text-zinc-500">{group.sub}</p>
 					</div>
 				</div>
@@ -114,7 +114,7 @@
 						<li class="group py-5">
 							<div class="flex items-baseline gap-3">
 								<h4
-									class="display text-[0.72rem] text-zinc-200 transition-colors group-hover:text-gold"
+									class="display text-[0.9rem] text-zinc-200 transition-colors group-hover:text-gold"
 								>
 									{service.title}
 								</h4>
@@ -123,10 +123,10 @@
 								></span>
 								<span class="gothic text-xl text-gold tabular-nums">{service.price} ₽</span>
 							</div>
-							<p class="mt-2 max-w-md text-[0.85rem] leading-relaxed text-zinc-500">
+							<p class="mt-2 max-w-md text-[0.95rem] leading-relaxed text-zinc-500">
 								{service.description}
 							</p>
-							<p class="mt-2 flex items-center gap-1.5 text-[0.7rem] text-zinc-600">
+							<p class="mt-2 flex items-center gap-1.5 text-[0.85rem] text-zinc-600">
 								<Icon name="clock" size="12" />
 								{service.duration_min} min · {service.tagline}
 							</p>
@@ -150,10 +150,10 @@
 	<div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
 		<div class="flex flex-wrap items-end justify-between gap-4">
 			<div>
-				<p class="display text-[0.6rem] text-gold">Behind the chairs</p>
+				<p class="display text-[0.8rem] text-gold">Behind the chairs</p>
 				<h2 class="gothic mt-3 text-4xl text-zinc-100 sm:text-5xl">The crew</h2>
 			</div>
-			<a href="/crew" class="display text-[0.62rem] text-zinc-400 transition-colors hover:text-gold">
+			<a href="/crew" class="display text-[0.8rem] text-zinc-400 transition-colors hover:text-gold">
 				All barbers →
 			</a>
 		</div>
@@ -163,11 +163,11 @@
 				<article class="card card-hover p-6">
 					<div class="flex items-center justify-between">
 						<span class="text-gold/60"><Icon name="star" size="16" /></span>
-						<span class="display text-[0.55rem] text-zinc-600">{barber.years} yrs</span>
+						<span class="display text-[0.75rem] text-zinc-600">{barber.years} yrs</span>
 					</div>
 					<h3 class="gothic mt-5 text-2xl text-gold">{barber.alias}</h3>
-					<p class="display mt-1 text-[0.55rem] text-zinc-500">{barber.name}</p>
-					<p class="mt-4 text-[0.82rem] leading-relaxed text-zinc-400">{barber.specialty}</p>
+					<p class="display mt-1 text-[0.75rem] text-zinc-500">{barber.name}</p>
+					<p class="mt-4 text-[0.95rem] leading-relaxed text-zinc-400">{barber.specialty}</p>
 				</article>
 			{/each}
 		</div>
@@ -178,10 +178,10 @@
 <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
 	<div class="flex flex-wrap items-end justify-between gap-4">
 		<div>
-			<p class="display text-[0.6rem] text-gold">Take the shop home</p>
+			<p class="display text-[0.8rem] text-gold">Take the shop home</p>
 			<h2 class="gothic mt-3 text-4xl text-zinc-100 sm:text-5xl">The counter</h2>
 		</div>
-		<a href="/shop" class="display text-[0.62rem] text-zinc-400 transition-colors hover:text-gold">
+		<a href="/shop" class="display text-[0.8rem] text-zinc-400 transition-colors hover:text-gold">
 			Full catalogue →
 		</a>
 	</div>
@@ -190,16 +190,16 @@
 		{#each data.featured as product (product.id)}
 			<a href="/shop#p{product.id}" class="card card-hover group flex flex-col p-6">
 				<div class="flex items-start justify-between gap-3">
-					<span class="display text-[0.55rem] text-zinc-600">{product.category}</span>
+					<span class="display text-[0.75rem] text-zinc-600">{product.category}</span>
 					{#if product.badge}
-						<span class="display border border-gold/40 px-2 py-0.5 text-[0.5rem] text-gold">
+						<span class="display border border-gold/40 px-2 py-0.5 text-[0.7rem] text-gold">
 							{product.badge}
 						</span>
 					{/if}
 				</div>
 
 				<h3
-					class="mt-5 text-[0.95rem] leading-snug font-medium text-zinc-200 transition-colors group-hover:text-gold"
+					class="mt-5 text-[1.05rem] leading-snug font-medium text-zinc-200 transition-colors group-hover:text-gold"
 				>
 					{product.title}
 				</h3>

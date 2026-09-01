@@ -26,11 +26,11 @@
 		<!-- Back-office band: deliberately unlike the storefront header -->
 		<div class="flex items-center gap-3 py-4">
 			<span class="text-gold"><Icon name="crown" size="17" /></span>
-			<p class="display text-[0.6rem] text-gold">Back office</p>
+			<p class="display text-[0.8rem] text-gold">Back office</p>
 			<span class="h-px flex-1 bg-zinc-800"></span>
 			<a
 				href="/"
-				class="display text-[0.55rem] text-zinc-500 transition-colors hover:text-gold"
+				class="display text-[0.75rem] text-zinc-500 transition-colors hover:text-gold"
 			>
 				← Storefront
 			</a>
@@ -41,7 +41,7 @@
 				{#each tabs as tab (tab.href)}
 					<a
 						href={tab.href}
-						class="display flex shrink-0 snap-start items-center gap-2 border-b-2 px-4 py-3 text-[0.6rem] transition-colors {active(
+						class="display flex shrink-0 snap-start items-center gap-2 border-b-2 px-4 py-3 text-[0.8rem] transition-colors {active(
 							tab
 						)
 							? 'border-gold text-gold'

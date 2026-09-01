@@ -93,6 +93,6 @@
 	{#if error}
 		<p class="mt-1.5 text-xs text-flash">{error}</p>
 	{:else if hint}
-		<p id="{id}-hint" class="mt-1.5 text-[0.7rem] text-zinc-600">{hint}</p>
+		<p id="{id}-hint" class="mt-1.5 text-[0.85rem] text-zinc-600">{hint}</p>
 	{/if}
 </div>

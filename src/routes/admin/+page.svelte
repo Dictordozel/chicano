@@ -40,7 +40,7 @@
 					<Icon name="chevron" size="13" class="text-zinc-700" />
 				</div>
 				<p class="gothic mt-4 text-4xl text-gold tabular-nums">{tile.value}</p>
-				<p class="display mt-1 text-[0.55rem] text-zinc-500">{tile.label}</p>
+				<p class="display mt-1 text-[0.75rem] text-zinc-500">{tile.label}</p>
 			</a>
 		{/each}
 	</div>
@@ -55,7 +55,7 @@
 					? 'transition-colors hover:border-gold/50'
 					: ''}"
 			>
-				<dt class="display text-[0.52rem] text-zinc-500">{row.k}</dt>
+				<dt class="display text-[0.75rem] text-zinc-500">{row.k}</dt>
 				<dd class="mt-1.5 text-lg text-zinc-200 tabular-nums">{row.v}</dd>
 			</svelte:element>
 		{/each}
@@ -82,7 +82,7 @@
 	</div>
 
 	<!-- --------------------------------------------------- today -->
-	<h2 class="display mt-14 border-b border-zinc-800 pb-4 text-[0.65rem] text-zinc-100">
+	<h2 class="display mt-14 border-b border-zinc-800 pb-4 text-[0.85rem] text-zinc-100">
 		Today's chairs
 	</h2>
 
@@ -94,10 +94,10 @@
 		<ul class="divide-y divide-zinc-900">
 			{#each data.todayList as a (a.id)}
 				<li class="flex flex-wrap items-center gap-x-4 gap-y-1 py-3.5 text-sm">
-					<span class="display w-12 shrink-0 text-[0.62rem] text-gold tabular-nums">{a.time}</span>
+					<span class="display w-12 shrink-0 text-[0.8rem] text-gold tabular-nums">{a.time}</span>
 					<span class="min-w-0 flex-1 truncate text-zinc-200">{a.service}</span>
-					<span class="display shrink-0 text-[0.55rem] text-zinc-500">{a.barber_alias}</span>
-					<span class="w-full truncate text-[0.75rem] text-zinc-600 sm:w-auto sm:shrink-0">
+					<span class="display shrink-0 text-[0.75rem] text-zinc-500">{a.barber_alias}</span>
+					<span class="w-full truncate text-[0.9rem] text-zinc-600 sm:w-auto sm:shrink-0">
 						{a.client_name} · {a.client_email}
 					</span>
 				</li>
@@ -107,23 +107,23 @@
 
 	<!-- ------------------------------------------------- next up -->
 	{#if data.nextUp.length > 0}
-		<h2 class="display mt-12 border-b border-zinc-800 pb-4 text-[0.65rem] text-zinc-100">
+		<h2 class="display mt-12 border-b border-zinc-800 pb-4 text-[0.85rem] text-zinc-100">
 			Coming up
 		</h2>
 		<ul class="divide-y divide-zinc-900">
 			{#each data.nextUp as a (a.id)}
 				<li class="flex flex-wrap items-center gap-x-4 gap-y-1 py-3.5 text-sm">
-					<span class="w-24 shrink-0 text-[0.72rem] text-zinc-500 tabular-nums">
+					<span class="w-24 shrink-0 text-[0.9rem] text-zinc-500 tabular-nums">
 						{fmt(a.date)} · {a.time}
 					</span>
 					<span class="min-w-0 flex-1 truncate text-zinc-300">{a.service}</span>
-					<span class="display shrink-0 text-[0.55rem] text-zinc-500">{a.barber_alias}</span>
+					<span class="display shrink-0 text-[0.75rem] text-zinc-500">{a.barber_alias}</span>
 				</li>
 			{/each}
 		</ul>
 		<a
 			href="/admin/appointments"
-			class="display mt-5 inline-block text-[0.55rem] text-zinc-500 transition-colors hover:text-gold"
+			class="display mt-5 inline-block text-[0.75rem] text-zinc-500 transition-colors hover:text-gold"
 		>
 			All bookings →
 		</a>

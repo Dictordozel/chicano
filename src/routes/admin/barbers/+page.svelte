@@ -70,7 +70,7 @@
 	<div class="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-12">
 		<!-- ------------------------------------------------------ list -->
 		<div>
-			<h2 class="display border-b border-zinc-800 pb-4 text-[0.62rem] text-zinc-100">
+			<h2 class="display border-b border-zinc-800 pb-4 text-[0.8rem] text-zinc-100">
 				Behind the chairs — {data.barbers.length}
 			</h2>
 
@@ -85,11 +85,11 @@
 						<div class="min-w-0 flex-1">
 							<div class="flex items-baseline gap-2.5">
 								<span class="gothic text-2xl text-gold">{b.alias}</span>
-								<span class="display text-[0.55rem] text-zinc-500">{b.name}</span>
+								<span class="display text-[0.75rem] text-zinc-500">{b.name}</span>
 							</div>
-							<p class="mt-1.5 text-[0.8rem] text-zinc-400">{b.specialty}</p>
-							<p class="mt-1 line-clamp-2 text-[0.75rem] leading-relaxed text-zinc-600">{b.bio}</p>
-							<p class="mt-1.5 text-[0.68rem] text-zinc-600">
+							<p class="mt-1.5 text-[0.95rem] text-zinc-400">{b.specialty}</p>
+							<p class="mt-1 line-clamp-2 text-[0.9rem] leading-relaxed text-zinc-600">{b.bio}</p>
+							<p class="mt-1.5 text-[0.85rem] text-zinc-600">
 								{b.years} yrs · <code class="text-zinc-700">{b.slug}</code>
 								{#if b.booked > 0}
 									· <span class="text-zinc-500">{b.booked} on the books</span>
@@ -100,7 +100,7 @@
 						<div class="flex shrink-0 items-center gap-3">
 							<a
 								href="?edit={b.id}#editor"
-								class="display text-[0.5rem] text-zinc-500 transition-colors hover:text-gold"
+								class="display text-[0.7rem] text-zinc-500 transition-colors hover:text-gold"
 								aria-label="Edit {b.alias}"
 							>
 								Edit
@@ -127,14 +127,14 @@
 		<div class="lg:sticky lg:top-24 lg:self-start">
 			<div id="editor" class="card p-6 {editing ? 'border-gold/50' : ''}">
 				<div class="flex items-center justify-between gap-3">
-					<h2 class="display flex items-center gap-2 text-[0.62rem] text-gold">
+					<h2 class="display flex items-center gap-2 text-[0.8rem] text-gold">
 						<Icon name={editing ? 'razor' : 'plus'} size="14" stroke={2} />
 						{editing ? 'Edit barber' : 'New barber'}
 					</h2>
 					{#if editing}
 						<a
 							href="/admin/barbers"
-							class="display text-[0.5rem] text-zinc-500 transition-colors hover:text-zinc-200"
+							class="display text-[0.7rem] text-zinc-500 transition-colors hover:text-zinc-200"
 						>
 							Cancel
 						</a>
@@ -142,7 +142,7 @@
 				</div>
 
 				{#if editing}
-					<p class="mt-2 truncate text-[0.7rem] text-zinc-600">#{editing.id} · {editing.alias}</p>
+					<p class="mt-2 truncate text-[0.85rem] text-zinc-600">#{editing.id} · {editing.alias}</p>
 				{/if}
 
 				<form
@@ -221,7 +221,7 @@
 					</button>
 
 					{#if editing}
-						<p class="text-center text-[0.68rem] leading-relaxed text-zinc-600">
+						<p class="text-center text-[0.85rem] leading-relaxed text-zinc-600">
 							Bookings already made stay with this barber under the new name.
 						</p>
 					{/if}

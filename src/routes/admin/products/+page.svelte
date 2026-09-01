@@ -70,7 +70,7 @@
 	<div class="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-12">
 		<!-- ------------------------------------------------------ list -->
 		<div>
-			<h2 class="display border-b border-zinc-800 pb-4 text-[0.62rem] text-zinc-100">
+			<h2 class="display border-b border-zinc-800 pb-4 text-[0.8rem] text-zinc-100">
 				On the shelf — {data.products.length}
 			</h2>
 
@@ -88,22 +88,22 @@
 
 						<div class="min-w-0 flex-1">
 							<div class="flex flex-wrap items-center gap-2">
-								<span class="display border border-zinc-700 px-1.5 py-0.5 text-[0.48rem] text-zinc-400">
+								<span class="display border border-zinc-700 px-1.5 py-0.5 text-[0.7rem] text-zinc-400">
 									{p.category}
 								</span>
 								{#if p.badge}
-									<span class="display border border-gold/40 px-1.5 py-0.5 text-[0.48rem] text-gold">
+									<span class="display border border-gold/40 px-1.5 py-0.5 text-[0.7rem] text-gold">
 										{p.badge}
 									</span>
 								{/if}
-								<span class="display text-[0.5rem] text-zinc-600">{p.brand}</span>
+								<span class="display text-[0.7rem] text-zinc-600">{p.brand}</span>
 							</div>
 
-							<p class="mt-2 text-[0.88rem] leading-snug font-medium text-zinc-100">{p.title}</p>
-							<p class="mt-1 line-clamp-2 text-[0.75rem] leading-relaxed text-zinc-500">
+							<p class="mt-2 text-[1rem] leading-snug font-medium text-zinc-100">{p.title}</p>
+							<p class="mt-1 line-clamp-2 text-[0.9rem] leading-relaxed text-zinc-500">
 								{p.description}
 							</p>
-							<p class="mt-1.5 flex flex-wrap items-center gap-x-2 text-[0.68rem] text-zinc-600">
+							<p class="mt-1.5 flex flex-wrap items-center gap-x-2 text-[0.85rem] text-zinc-600">
 								{#if p.volume}<span>{p.volume}</span>·{/if}
 								<code class="text-zinc-700">{p.slug}</code>
 								·
@@ -123,7 +123,7 @@
 
 							<a
 								href="?edit={p.id}#editor"
-								class="display text-[0.5rem] text-zinc-500 transition-colors hover:text-gold"
+								class="display text-[0.7rem] text-zinc-500 transition-colors hover:text-gold"
 								aria-label="Edit {p.title}"
 							>
 								Edit
@@ -149,14 +149,14 @@
 		<div class="lg:sticky lg:top-24 lg:self-start">
 			<div id="editor" class="card p-6 {editing ? 'border-gold/50' : ''}">
 				<div class="flex items-center justify-between gap-3">
-					<h2 class="display flex items-center gap-2 text-[0.62rem] text-gold">
+					<h2 class="display flex items-center gap-2 text-[0.8rem] text-gold">
 						<Icon name={editing ? 'bag' : 'plus'} size="14" stroke={2} />
 						{editing ? 'Edit product' : 'New product'}
 					</h2>
 					{#if editing}
 						<a
 							href="/admin/products"
-							class="display text-[0.5rem] text-zinc-500 transition-colors hover:text-zinc-200"
+							class="display text-[0.7rem] text-zinc-500 transition-colors hover:text-zinc-200"
 						>
 							Cancel
 						</a>
@@ -164,7 +164,7 @@
 				</div>
 
 				{#if editing}
-					<p class="mt-2 truncate text-[0.7rem] text-zinc-600">#{editing.id} · {editing.title}</p>
+					<p class="mt-2 truncate text-[0.85rem] text-zinc-600">#{editing.id} · {editing.title}</p>
 				{/if}
 
 				<form
@@ -262,7 +262,7 @@
 					</button>
 
 					{#if editing}
-						<p class="text-center text-[0.68rem] leading-relaxed text-zinc-600">
+						<p class="text-center text-[0.85rem] leading-relaxed text-zinc-600">
 							Orders already placed keep the price they were paid at.
 						</p>
 					{/if}

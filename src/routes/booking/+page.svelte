@@ -127,7 +127,7 @@
 
 <section class="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-20">
 	<div class="text-center">
-		<p class="display text-[0.6rem] text-gold">Reserve your time</p>
+		<p class="display text-[0.8rem] text-gold">Reserve your time</p>
 		<h1 class="gothic mt-3 text-4xl text-zinc-100 sm:text-6xl">Book a chair</h1>
 		<Ornament icon="razor" class="mx-auto mt-6 max-w-xs" />
 	</div>
@@ -145,7 +145,7 @@
 			<dl class="mt-7 space-y-3 border-y border-gold/20 py-6 text-left text-sm">
 				{#each [{ k: 'Service', v: booked.service }, { k: 'Barber', v: `${booked.barber_alias} — ${booked.barber_name}` }, { k: 'When', v: `${fmt(booked.date, { weekday: 'long', day: 'numeric', month: 'long' })}, ${booked.time}` }, { k: 'Duration', v: `${booked.duration_min} min` }, { k: 'Price', v: `${booked.price} ₽` }] as row (row.k)}
 					<div class="flex justify-between gap-4">
-						<dt class="display text-[0.58rem] text-zinc-500">{row.k}</dt>
+						<dt class="display text-[0.75rem] text-zinc-500">{row.k}</dt>
 						<dd class="text-right text-zinc-200">{row.v}</dd>
 					</div>
 				{/each}
@@ -168,9 +168,9 @@
 			<!-- ------------------------------------------------ 1. service -->
 			<fieldset class="border-t border-zinc-800 pt-8">
 				<legend class="sr-only">Service</legend>
-				<p class="display flex items-center gap-3 text-[0.62rem] text-zinc-100">
+				<p class="display flex items-center gap-3 text-[0.8rem] text-zinc-100">
 					<span
-						class="flex h-6 w-6 items-center justify-center border border-gold text-[0.6rem] text-gold"
+						class="flex h-6 w-6 items-center justify-center border border-gold text-[0.8rem] text-gold"
 						>1</span
 					>
 					Choose the work
@@ -179,7 +179,7 @@
 				<div class="mt-6 space-y-8">
 					{#each [{ key: 'hair', label: 'Men’s haircuts', icon: 'comb' }, { key: 'beard', label: 'Beard & moustache', icon: 'razor' }] as group (group.key)}
 						<div>
-							<p class="mb-3 flex items-center gap-2 text-[0.7rem] text-zinc-500">
+							<p class="mb-3 flex items-center gap-2 text-[0.85rem] text-zinc-500">
 								<span class="text-gold/60"><Icon name={group.icon} size="14" /></span>
 								{group.label}
 							</p>
@@ -195,13 +195,13 @@
 									>
 										<div class="flex items-baseline justify-between gap-3">
 											<span
-												class="display text-[0.68rem] {serviceId === s.id
+												class="display text-[0.85rem] {serviceId === s.id
 													? 'text-gold'
 													: 'text-zinc-200'}">{s.title}</span
 											>
 											<span class="gothic shrink-0 text-lg text-gold tabular-nums">{s.price} ₽</span>
 										</div>
-										<p class="mt-1.5 text-[0.72rem] text-zinc-500">
+										<p class="mt-1.5 text-[0.9rem] text-zinc-500">
 											{s.duration_min} min · {s.tagline}
 										</p>
 									</button>
@@ -215,9 +215,9 @@
 			<!-- ------------------------------------------------- 2. barber -->
 			<fieldset class="mt-12 border-t border-zinc-800 pt-8">
 				<legend class="sr-only">Barber</legend>
-				<p class="display flex items-center gap-3 text-[0.62rem] text-zinc-100">
+				<p class="display flex items-center gap-3 text-[0.8rem] text-zinc-100">
 					<span
-						class="flex h-6 w-6 items-center justify-center border border-gold text-[0.6rem] text-gold"
+						class="flex h-6 w-6 items-center justify-center border border-gold text-[0.8rem] text-gold"
 						>2</span
 					>
 					Pick your barber
@@ -236,8 +236,8 @@
 							<span class="gothic block text-2xl {barberId === b.id ? 'text-gold' : 'text-zinc-300'}">
 								{b.alias}
 							</span>
-							<span class="display mt-1 block text-[0.53rem] text-zinc-500">{b.name}</span>
-							<span class="mt-3 block text-[0.75rem] leading-snug text-zinc-500">{b.specialty}</span>
+							<span class="display mt-1 block text-[0.75rem] text-zinc-500">{b.name}</span>
+							<span class="mt-3 block text-[0.9rem] leading-snug text-zinc-500">{b.specialty}</span>
 						</button>
 					{/each}
 				</div>
@@ -246,9 +246,9 @@
 			<!-- --------------------------------------------------- 3. date -->
 			<fieldset class="mt-12 border-t border-zinc-800 pt-8">
 				<legend class="sr-only">Date</legend>
-				<p class="display flex items-center gap-3 text-[0.62rem] text-zinc-100">
+				<p class="display flex items-center gap-3 text-[0.8rem] text-zinc-100">
 					<span
-						class="flex h-6 w-6 items-center justify-center border border-gold text-[0.6rem] text-gold"
+						class="flex h-6 w-6 items-center justify-center border border-gold text-[0.8rem] text-gold"
 						>3</span
 					>
 					Choose a day
@@ -258,31 +258,42 @@
 				<div class="-mx-4 mt-6 flex snap-x gap-2 overflow-x-auto px-4 pb-3 sm:mx-0 sm:px-0">
 					{#each data.dates as d, i (d)}
 						{@const free = freeCount(d)}
+						<!--
+							A full day is dimmed, never faded out: the date and the word "full"
+							have to stay readable, otherwise the chip reads as an empty hole
+							rather than as a day you cannot have.
+						-->
 						<button
 							type="button"
 							onclick={() => (date = d)}
 							disabled={free === 0}
 							aria-pressed={date === d}
-							class="flex w-16 shrink-0 snap-start flex-col items-center border py-3 transition-all duration-200 disabled:opacity-30 {date ===
+							class="flex w-16 shrink-0 snap-start flex-col items-center border py-3 transition-all duration-200 {date ===
 							d
 								? 'border-gold bg-gold/10'
-								: 'border-zinc-800 bg-zinc-900/30 enabled:hover:border-zinc-700'}"
+								: free === 0
+									? 'border-zinc-800 bg-black/40'
+									: 'border-zinc-800 bg-zinc-900/30 enabled:hover:border-zinc-700'}"
 						>
-							<span class="display text-[0.52rem] text-zinc-500">
+							<span class="display text-[0.75rem] text-zinc-500">
 								{i === 0 ? 'Today' : fmt(d, { weekday: 'short' })}
 							</span>
 							<span
-								class="gothic mt-1 text-2xl tabular-nums {date === d ? 'text-gold' : 'text-zinc-200'}"
+								class="gothic mt-1 text-2xl tabular-nums {date === d
+									? 'text-gold'
+									: free === 0
+										? 'text-zinc-500'
+										: 'text-zinc-200'}"
 							>
 								{fmt(d, { day: 'numeric' })}
 							</span>
-							<span class="mt-1 text-[0.55rem] text-zinc-600">
+							<span class="mt-1 text-[0.75rem] {free === 0 ? 'text-flash' : 'text-zinc-500'}">
 								{free ? `${free} free` : 'full'}
 							</span>
 						</button>
 					{/each}
 				</div>
-				<p class="mt-1 text-[0.7rem] text-zinc-600">
+				<p class="mt-1 text-[0.85rem] text-zinc-600">
 					{fmt(date, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
 				</p>
 			</fieldset>
@@ -290,9 +301,9 @@
 			<!-- --------------------------------------------------- 4. time -->
 			<fieldset class="mt-12 border-t border-zinc-800 pt-8">
 				<legend class="sr-only">Time</legend>
-				<p class="display flex items-center gap-3 text-[0.62rem] text-zinc-100">
+				<p class="display flex items-center gap-3 text-[0.8rem] text-zinc-100">
 					<span
-						class="flex h-6 w-6 items-center justify-center border border-gold text-[0.6rem] text-gold"
+						class="flex h-6 w-6 items-center justify-center border border-gold text-[0.8rem] text-gold"
 						>4</span
 					>
 					Free time with {barber?.alias}
@@ -315,9 +326,9 @@
 									? 'border-gold bg-gold text-black'
 									: open
 										? 'border-zinc-800 bg-zinc-900/30 text-zinc-200 hover:border-gold/60'
-										: 'border-zinc-900 text-zinc-700 line-through'}"
+										: 'border-zinc-800 bg-black/40 text-zinc-500 line-through'}"
 							>
-								<span class="display text-[0.68rem] tabular-nums">{t}</span>
+								<span class="display text-[0.85rem] tabular-nums">{t}</span>
 							</button>
 						{/each}
 					</div>
@@ -331,9 +342,9 @@
 			<!-- ------------------------------------------------ 5. details -->
 			<fieldset class="mt-12 border-t border-zinc-800 pt-8">
 				<legend class="sr-only">Your details</legend>
-				<p class="display flex items-center gap-3 text-[0.62rem] text-zinc-100">
+				<p class="display flex items-center gap-3 text-[0.8rem] text-zinc-100">
 					<span
-						class="flex h-6 w-6 items-center justify-center border border-gold text-[0.6rem] text-gold"
+						class="flex h-6 w-6 items-center justify-center border border-gold text-[0.8rem] text-gold"
 						>5</span
 					>
 					Your details
@@ -389,7 +400,7 @@
 							/>
 						</div>
 					</div>
-					<p class="mt-3 text-[0.72rem] text-zinc-600">
+					<p class="mt-3 text-[0.9rem] text-zinc-600">
 						Booking without an account creates one for you — no password needed.
 					</p>
 				{/if}
@@ -413,7 +424,7 @@
 			>
 				<div class="flex flex-wrap items-center justify-between gap-4">
 					<div class="min-w-0">
-						<p class="display text-[0.55rem] text-zinc-500">Your booking</p>
+						<p class="display text-[0.75rem] text-zinc-500">Your booking</p>
 						<p class="mt-1 truncate text-sm text-zinc-200">
 							{service?.title ?? '—'}
 							<span class="text-zinc-600">·</span>

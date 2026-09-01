@@ -110,7 +110,7 @@
 		<!-- ------------------------------------------------------ list -->
 		<div>
 			<div class="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800 pb-4">
-				<h2 class="display text-[0.62rem] text-zinc-100">
+				<h2 class="display text-[0.8rem] text-zinc-100">
 					In the book — {visible.length}
 				</h2>
 
@@ -120,7 +120,7 @@
 							type="button"
 							onclick={() => (barberFilter = chip.key)}
 							aria-pressed={barberFilter === chip.key}
-							class="display border px-2.5 py-1.5 text-[0.5rem] transition-colors {barberFilter ===
+							class="display border px-2.5 py-1.5 text-[0.7rem] transition-colors {barberFilter ===
 							chip.key
 								? 'border-gold bg-gold text-black'
 								: 'border-zinc-800 text-zinc-500 hover:border-zinc-700 hover:text-zinc-200'}"
@@ -137,7 +137,7 @@
 				</p>
 			{:else}
 				{#each Object.entries(grouped) as [day, rows] (day)}
-					<h3 class="display mt-8 mb-1 text-[0.55rem] text-gold">{fmt(day)}</h3>
+					<h3 class="display mt-8 mb-1 text-[0.75rem] text-gold">{fmt(day)}</h3>
 					<ul class="divide-y divide-zinc-900">
 						{#each rows as a (a.id)}
 							<li
@@ -146,36 +146,36 @@
 									? 'border-gold bg-gold/5'
 									: 'border-transparent'} {a.status === 'cancelled' ? 'opacity-45' : ''}"
 							>
-								<span class="display w-11 shrink-0 pt-0.5 text-[0.62rem] text-gold tabular-nums">
+								<span class="display w-11 shrink-0 pt-0.5 text-[0.8rem] text-gold tabular-nums">
 									{a.time}
 								</span>
 
 								<div class="min-w-0 flex-1">
 									<div class="flex flex-wrap items-center gap-2">
-										<span class="text-[0.88rem] text-zinc-100">{a.service}</span>
+										<span class="text-[1rem] text-zinc-100">{a.service}</span>
 										{#if a.status === 'cancelled'}
-											<span class="display border border-flash px-1.5 py-0.5 text-[0.45rem] text-flash">
+											<span class="display border border-flash px-1.5 py-0.5 text-[0.7rem] text-flash">
 												cancelled
 											</span>
 										{/if}
 									</div>
-									<p class="mt-1 text-[0.75rem] text-zinc-500">
+									<p class="mt-1 text-[0.9rem] text-zinc-500">
 										{a.barber_alias} · {a.duration_min} min · {a.price} ₽
 									</p>
-									<p class="mt-1 text-[0.75rem] text-zinc-400">
+									<p class="mt-1 text-[0.9rem] text-zinc-400">
 										{a.client_name}
 										<span class="text-zinc-600">· {a.client_email}</span>
 										{#if a.client_phone}<span class="text-zinc-600"> · {a.client_phone}</span>{/if}
 									</p>
 									{#if a.note}
-										<p class="mt-1 text-[0.72rem] text-zinc-600 italic">“{a.note}”</p>
+										<p class="mt-1 text-[0.9rem] text-zinc-600 italic">“{a.note}”</p>
 									{/if}
 								</div>
 
 								<div class="flex shrink-0 items-center gap-3">
 									<a
 										href="?edit={a.id}#editor"
-										class="display text-[0.5rem] text-zinc-500 transition-colors hover:text-gold"
+										class="display text-[0.7rem] text-zinc-500 transition-colors hover:text-gold"
 										aria-label="Edit booking {a.id}"
 									>
 										Edit
@@ -186,7 +186,7 @@
 											<input type="hidden" name="id" value={a.id} />
 											<button
 												type="submit"
-												class="display text-[0.5rem] text-zinc-500 transition-colors hover:text-gold"
+												class="display text-[0.7rem] text-zinc-500 transition-colors hover:text-gold"
 											>
 												Restore
 											</button>
@@ -196,7 +196,7 @@
 											<input type="hidden" name="id" value={a.id} />
 											<button
 												type="submit"
-												class="display text-[0.5rem] text-zinc-500 transition-colors hover:text-flash"
+												class="display text-[0.7rem] text-zinc-500 transition-colors hover:text-flash"
 											>
 												Cancel
 											</button>
@@ -242,10 +242,10 @@
 
 			{#if data.recentClients.length > 0 && !editing}
 				<div class="card mt-4 p-5">
-					<p class="display text-[0.55rem] text-zinc-500">Recent clients</p>
+					<p class="display text-[0.75rem] text-zinc-500">Recent clients</p>
 					<ul class="mt-3 space-y-1.5">
 						{#each data.recentClients.slice(0, 6) as c (c.email)}
-							<li class="truncate text-[0.75rem] text-zinc-500">
+							<li class="truncate text-[0.9rem] text-zinc-500">
 								<span class="text-zinc-300">{c.name}</span> · {c.email}
 							</li>
 						{/each}

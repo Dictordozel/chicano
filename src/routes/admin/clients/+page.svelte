@@ -111,7 +111,7 @@
 		<!-- ------------------------------------------------------ list -->
 		<div>
 			<div class="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800 pb-4">
-				<h2 class="display text-[0.62rem] text-zinc-100">
+				<h2 class="display text-[0.8rem] text-zinc-100">
 					On the book — {data.clients.length}
 				</h2>
 
@@ -123,18 +123,18 @@
 						value={data.query}
 						placeholder="Name, email or phone"
 						aria-label="Search clients"
-						class="field !w-52 !py-1.5 !text-[0.8rem]"
+						class="field !w-52 !py-1.5 !text-[0.95rem]"
 					/>
 					<button
 						type="submit"
-						class="display border border-zinc-800 px-3 py-2 text-[0.5rem] text-zinc-400 transition-colors hover:border-gold hover:text-gold"
+						class="display border border-zinc-800 px-3 py-2 text-[0.7rem] text-zinc-400 transition-colors hover:border-gold hover:text-gold"
 					>
 						Find
 					</button>
 					{#if data.query}
 						<a
 							href="/admin/clients"
-							class="display text-[0.5rem] text-zinc-600 transition-colors hover:text-zinc-300"
+							class="display text-[0.7rem] text-zinc-600 transition-colors hover:text-zinc-300"
 						>
 							Clear
 						</a>
@@ -157,22 +157,22 @@
 						>
 							<div class="min-w-0 flex-1">
 								<div class="flex flex-wrap items-center gap-2">
-									<span class="text-[0.9rem] text-zinc-100">{c.name}</span>
+									<span class="text-[1rem] text-zinc-100">{c.name}</span>
 									{#if c.is_admin}
-										<span class="display border border-gold/40 px-1.5 py-0.5 text-[0.45rem] text-gold">
+										<span class="display border border-gold/40 px-1.5 py-0.5 text-[0.7rem] text-gold">
 											admin
 										</span>
 									{/if}
 									{#if data.user?.id === c.id}
-										<span class="display text-[0.45rem] text-zinc-600">you</span>
+										<span class="display text-[0.7rem] text-zinc-600">you</span>
 									{/if}
 								</div>
 
-								<p class="mt-1 text-[0.78rem] text-zinc-500">
+								<p class="mt-1 text-[0.9rem] text-zinc-500">
 									{c.email}{c.phone ? ` · ${c.phone}` : ''}
 								</p>
 
-								<p class="mt-1.5 flex flex-wrap gap-x-3 text-[0.68rem] text-zinc-600">
+								<p class="mt-1.5 flex flex-wrap gap-x-3 text-[0.85rem] text-zinc-600">
 									<span>
 										{c.bookings} booking{c.bookings === 1 ? '' : 's'}
 										{#if c.bookings_all > c.bookings}
@@ -189,7 +189,7 @@
 							<div class="flex shrink-0 items-center gap-3">
 								{#if data.user?.id === c.id}
 									<span
-										class="display cursor-not-allowed text-[0.5rem] text-zinc-700"
+										class="display cursor-not-allowed text-[0.7rem] text-zinc-700"
 										title="You cannot change your own back-office rights"
 									>
 										{c.is_admin ? 'Admin' : '—'}
@@ -200,7 +200,7 @@
 										<input type="hidden" name="grant" value={c.is_admin ? '0' : '1'} />
 										<button
 											type="submit"
-											class="display text-[0.5rem] transition-colors {c.is_admin
+											class="display text-[0.7rem] transition-colors {c.is_admin
 												? 'text-gold hover:text-flash'
 												: 'text-zinc-600 hover:text-gold'}"
 											title={c.is_admin
@@ -214,7 +214,7 @@
 
 								<a
 									href="?edit={c.id}{data.query ? `&q=${encodeURIComponent(data.query)}` : ''}#editor"
-									class="display text-[0.5rem] text-zinc-500 transition-colors hover:text-gold"
+									class="display text-[0.7rem] text-zinc-500 transition-colors hover:text-gold"
 									aria-label="Edit {c.name}"
 								>
 									Edit
@@ -244,7 +244,7 @@
 				address means anyone who types that address gets the back office.
 			-->
 			<p
-				class="mt-8 flex gap-3 border border-dashed border-zinc-800 px-4 py-3.5 text-[0.72rem] leading-relaxed text-zinc-600"
+				class="mt-8 flex gap-3 border border-dashed border-zinc-800 px-4 py-3.5 text-[0.9rem] leading-relaxed text-zinc-600"
 			>
 				<span class="mt-0.5 shrink-0 text-gold/50"><Icon name="crown" size="14" /></span>
 				<span>
@@ -262,14 +262,14 @@
 		<div class="lg:sticky lg:top-24 lg:self-start">
 			<div id="editor" class="card p-6 {editing ? 'border-gold/50' : ''}">
 				<div class="flex items-center justify-between gap-3">
-					<h2 class="display flex items-center gap-2 text-[0.62rem] text-gold">
+					<h2 class="display flex items-center gap-2 text-[0.8rem] text-gold">
 						<Icon name={editing ? 'user' : 'plus'} size="14" stroke={2} />
 						{editing ? 'Edit client' : 'New client'}
 					</h2>
 					{#if editing}
 						<a
 							href="/admin/clients"
-							class="display text-[0.5rem] text-zinc-500 transition-colors hover:text-zinc-200"
+							class="display text-[0.7rem] text-zinc-500 transition-colors hover:text-zinc-200"
 						>
 							Cancel
 						</a>
@@ -277,7 +277,7 @@
 				</div>
 
 				{#if editing}
-					<p class="mt-2 truncate text-[0.7rem] text-zinc-600">
+					<p class="mt-2 truncate text-[0.85rem] text-zinc-600">
 						#{editing.id}{editing.is_admin ? ' · back-office access' : ''}
 					</p>
 				{/if}
@@ -332,7 +332,7 @@
 					</button>
 
 					{#if editing}
-						<p class="text-center text-[0.68rem] leading-relaxed text-zinc-600">
+						<p class="text-center text-[0.85rem] leading-relaxed text-zinc-600">
 							Their bookings and orders stay attached.
 						</p>
 					{/if}
@@ -342,10 +342,10 @@
 			<!-- Recent history, so the admin knows whose record this is -->
 			{#if editing && data.history.length > 0}
 				<div class="card mt-4 p-5">
-					<p class="display text-[0.55rem] text-zinc-500">Recent bookings</p>
+					<p class="display text-[0.75rem] text-zinc-500">Recent bookings</p>
 					<ul class="mt-3 space-y-2">
 						{#each data.history as h (h.date + h.time + h.service)}
-							<li class="text-[0.75rem] {h.status === 'cancelled' ? 'opacity-50' : ''}">
+							<li class="text-[0.9rem] {h.status === 'cancelled' ? 'opacity-50' : ''}">
 								<span class="text-zinc-300">{fmt(h.date)} · {h.time}</span>
 								<span class="block text-zinc-600">{h.service} · {h.barber}</span>
 							</li>

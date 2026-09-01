@@ -91,7 +91,10 @@
 @utility display {
 	font-family: var(--font-display);
 	text-transform: uppercase;
-	letter-spacing: 0.18em;
+	/* Oswald is condensed; at label sizes weight 400 with wide tracking reads as
+	   a grey smear. Medium weight and tighter tracking keep the words legible. */
+	font-weight: 500;
+	letter-spacing: 0.12em;
 }
 
 /* Thin engraved gold rule used between sections */
@@ -127,10 +130,10 @@
 		gap: 0.5rem;
 		padding: 0.75rem 1.5rem;
 		font-family: var(--font-display);
-		font-size: 0.75rem;
-		font-weight: 500;
+		font-size: 0.85rem;
+		font-weight: 600;
 		text-transform: uppercase;
-		letter-spacing: 0.18em;
+		letter-spacing: 0.12em;
 		border: 1px solid var(--color-zinc-800);
 		transition:
 			color 200ms var(--ease-chicano),
@@ -173,7 +176,7 @@
 		border: 1px solid var(--color-zinc-800);
 		padding: 0.75rem 1rem;
 		color: var(--color-zinc-100);
-		font-size: 0.9375rem;
+		font-size: 1rem;
 		transition:
 			border-color 200ms var(--ease-chicano),
 			background-color 200ms var(--ease-chicano);
@@ -191,10 +194,11 @@
 	.label {
 		display: block;
 		font-family: var(--font-display);
-		font-size: 0.625rem;
+		font-size: 0.8rem;
+		font-weight: 500;
 		text-transform: uppercase;
-		letter-spacing: 0.22em;
-		color: var(--color-zinc-500);
+		letter-spacing: 0.12em;
+		color: var(--color-zinc-400);
 		margin-bottom: 0.5rem;
 	}
 

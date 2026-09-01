@@ -70,7 +70,7 @@
 	<div class="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-12">
 		<!-- ------------------------------------------------------ list -->
 		<div>
-			<h2 class="display border-b border-zinc-800 pb-4 text-[0.62rem] text-zinc-100">
+			<h2 class="display border-b border-zinc-800 pb-4 text-[0.8rem] text-zinc-100">
 				On the list — {data.services.length}
 			</h2>
 
@@ -85,18 +85,18 @@
 						<div class="min-w-0 flex-1">
 							<div class="flex items-center gap-2">
 								<span
-									class="display border px-1.5 py-0.5 text-[0.48rem] {s.category === 'hair'
+									class="display border px-1.5 py-0.5 text-[0.7rem] {s.category === 'hair'
 										? 'border-gold/40 text-gold'
 										: 'border-zinc-700 text-zinc-400'}"
 								>
 									{s.category}
 								</span>
-								<span class="display text-[0.65rem] text-zinc-100">{s.title}</span>
+								<span class="display text-[0.85rem] text-zinc-100">{s.title}</span>
 							</div>
-							<p class="mt-1.5 line-clamp-2 text-[0.78rem] leading-relaxed text-zinc-500">
+							<p class="mt-1.5 line-clamp-2 text-[0.9rem] leading-relaxed text-zinc-500">
 								{s.description}
 							</p>
-							<p class="mt-1.5 text-[0.68rem] text-zinc-600">
+							<p class="mt-1.5 text-[0.85rem] text-zinc-600">
 								{s.duration_min} min · {s.tagline} ·
 								<code class="text-zinc-700">{s.slug}</code>
 								{#if s.booked > 0}
@@ -110,7 +110,7 @@
 
 							<a
 								href="?edit={s.id}#editor"
-								class="display text-[0.5rem] text-zinc-500 transition-colors hover:text-gold"
+								class="display text-[0.7rem] text-zinc-500 transition-colors hover:text-gold"
 								aria-label="Edit {s.title}"
 							>
 								Edit
@@ -137,14 +137,14 @@
 		<div class="lg:sticky lg:top-24 lg:self-start">
 			<div id="editor" class="card p-6 {editing ? 'border-gold/50' : ''}">
 				<div class="flex items-center justify-between gap-3">
-					<h2 class="display flex items-center gap-2 text-[0.62rem] text-gold">
+					<h2 class="display flex items-center gap-2 text-[0.8rem] text-gold">
 						<Icon name={editing ? 'razor' : 'plus'} size="14" stroke={2} />
 						{editing ? 'Edit service' : 'New service'}
 					</h2>
 					{#if editing}
 						<a
 							href="/admin/services"
-							class="display text-[0.5rem] text-zinc-500 transition-colors hover:text-zinc-200"
+							class="display text-[0.7rem] text-zinc-500 transition-colors hover:text-zinc-200"
 						>
 							Cancel
 						</a>
@@ -152,7 +152,7 @@
 				</div>
 
 				{#if editing}
-					<p class="mt-2 truncate text-[0.7rem] text-zinc-600">#{editing.id} · {editing.title}</p>
+					<p class="mt-2 truncate text-[0.85rem] text-zinc-600">#{editing.id} · {editing.title}</p>
 				{/if}
 
 				<form
@@ -249,7 +249,7 @@
 					</button>
 
 					{#if editing}
-						<p class="text-center text-[0.68rem] leading-relaxed text-zinc-600">
+						<p class="text-center text-[0.85rem] leading-relaxed text-zinc-600">
 							Existing bookings keep the price they were made at.
 						</p>
 					{/if}

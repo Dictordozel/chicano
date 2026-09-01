@@ -19,7 +19,7 @@
 			</div>
 
 			<div>
-				<p class="display mb-4 text-[0.6rem] text-zinc-500">Hours</p>
+				<p class="display mb-4 text-[0.8rem] text-zinc-500">Hours</p>
 				<ul class="space-y-1.5 text-sm text-zinc-400">
 					<li class="flex justify-between gap-4">
 						<span>Mon — Fri</span><span class="tabular-nums text-zinc-200">10:00 — 21:00</span>
@@ -31,7 +31,7 @@
 			</div>
 
 			<div>
-				<p class="display mb-4 text-[0.6rem] text-zinc-500">Find us</p>
+				<p class="display mb-4 text-[0.8rem] text-zinc-500">Find us</p>
 				<ul class="space-y-3 text-sm text-zinc-400">
 					<li class="flex items-start gap-2.5">
 						<span class="mt-0.5 text-gold/70"><Icon name="pin" size="15" /></span>
@@ -47,7 +47,7 @@
 			</div>
 
 			<div>
-				<p class="display mb-4 text-[0.6rem] text-zinc-500">Shop</p>
+				<p class="display mb-4 text-[0.8rem] text-zinc-500">Shop</p>
 				<ul class="space-y-2 text-sm text-zinc-400">
 					<li><a href="/booking" class="transition-colors hover:text-gold">Book a chair</a></li>
 					<li><a href="/shop" class="transition-colors hover:text-gold">Grooming goods</a></li>
@@ -61,7 +61,7 @@
 			class="mt-12 flex flex-col gap-3 border-t border-zinc-900 pt-6 text-xs text-zinc-600 sm:flex-row sm:items-center sm:justify-between"
 		>
 			<p>© {year} Chicano Barbershop — prototype build.</p>
-			<p class="display text-[0.55rem]">Sharp lines · Cold steel · Warm towels</p>
+			<p class="display text-[0.75rem]">Sharp lines · Cold steel · Warm towels</p>
 		</div>
 	</div>
 </footer>

@@ -8,7 +8,7 @@
 
 <section class="mx-auto flex max-w-md flex-col items-center px-4 py-24 text-center sm:py-32">
 	<p class="gothic foil text-8xl leading-none">{page.status}</p>
-	<p class="display mt-6 text-[0.7rem] text-zinc-300">
+	<p class="display mt-6 text-[0.85rem] text-zinc-300">
 		{page.error?.message ?? 'Something went sideways'}
 	</p>
 	<p class="mt-4 text-sm leading-relaxed text-zinc-500">
