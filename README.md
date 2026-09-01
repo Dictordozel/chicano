@@ -82,6 +82,20 @@ The database is a single file at `data/chicano.db`, created and seeded on first 
 in git — back it up, or delete it to start fresh. Keep the process alive with systemd, pm2 or
 Docker as you prefer.
 
+**Turn on compression at the proxy.** `adapter-node` pre-compresses the static build, but serves
+server-rendered HTML uncompressed: `/booking` goes out as 55 KB where gzip makes it 7 KB. You
+need a reverse proxy anyway for TLS and `ORIGIN`, so let it compress:
+
+```nginx
+gzip on;
+gzip_types text/html application/javascript application/json text/css;
+gzip_min_length 1024;
+```
+
+Measured on a throttled phone (1.6 Mbps, 150 ms RTT, 4× CPU slowdown), the remaining weight is
+mostly Google Fonts: 75 KB across three families, render-blocking and on a third-party origin.
+Self-hosting them, or dropping the weights that are not used, is the next thing worth doing.
+
 **Before showing it to anyone outside the shop:** sign-in is simulated and there is no payment
 step. Set `ADMIN_PASSCODE` to something of your own, and do not put real client data in it.
 
