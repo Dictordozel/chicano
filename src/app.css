@@ -53,6 +53,17 @@
 		color: #000;
 	}
 
+	/*
+	 * A fieldset defaults to `min-inline-size: min-content`, so it refuses to be
+	 * narrower than its widest child. The booking form puts a horizontally
+	 * scrolling day rail inside one: the fieldset stretched to the full rail
+	 * (1000px+) and dragged the whole page into sideways scroll on a phone,
+	 * defeating the rail's own `overflow-x: auto`.
+	 */
+	fieldset {
+		min-inline-size: 0;
+	}
+
 	/* Focus ring — gold, always visible for keyboard users */
 	:where(a, button, input, select, textarea, [tabindex]):focus-visible {
 		outline: 2px solid var(--color-gold);
