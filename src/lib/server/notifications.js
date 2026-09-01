@@ -99,7 +99,10 @@ export const TEMPLATES = {
 	reminder_hour:
 		'Chicano Barbershop: {name}, через час, в {time} — {service}, мастер {barber}. Ждём вас!',
 	broadcast_default:
-		'Chicano Barbershop: {name}, к сожалению, ваша запись на {date} в {time} переносится в связи с отключением электроэнергии. Мы свяжемся с вами для выбора нового времени. Извините за неудобства.'
+		'Chicano Barbershop: {name}, к сожалению, ваша запись на {date} в {time} переносится в связи с отключением электроэнергии. Мы свяжемся с вами для выбора нового времени. Извините за неудобства.',
+	// The "everyone" scope has no booking behind it, so only {name} resolves.
+	broadcast_all:
+		'Chicano Barbershop: {name}, поздравляем с Новым годом! Желаем острых линий и лёгкого года. Ждём вас в кресле.'
 };
 
 const SHOP_PHONE = '+7 000 000-00-00';
@@ -321,13 +324,52 @@ export function stopNotificationWorker() {
 /* Broadcasts                                                          */
 /* ------------------------------------------------------------------ */
 
+/** Placeholders that only exist when a message is tied to a booking. */
+const BOOKING_PLACEHOLDERS = ['date', 'time', 'service', 'barber'];
+
 /**
- * Who a force-majeure message would reach.
+ * Placeholders actually written in a template.
+ * @param {string} template
+ */
+export function placeholdersIn(template) {
+	return [...template.matchAll(/\{(\w+)\}/g)].map((m) => m[1]);
+}
+
+/**
+ * Booking placeholders used in a template that has no booking behind it —
+ * they would reach the client as literal `{date}` text.
+ * @param {string} template
+ */
+export function unresolvablePlaceholders(template) {
+	return [...new Set(placeholdersIn(template))].filter((p) => BOOKING_PLACEHOLDERS.includes(p));
+}
+
+/**
+ * Who a broadcast would reach.
  *
- * @param {{ scope?: 'today' | 'date' | 'range' | 'upcoming', date?: string, until?: string, barberId?: number }} filter
+ * `all` is the odd one out: every registered client, booking or not — the
+ * scope for a New Year greeting rather than an outage notice. It is keyed on
+ * the client, so somebody with three bookings still gets one message.
+ *
+ * @param {{ scope?: 'today' | 'date' | 'range' | 'upcoming' | 'all', date?: string, until?: string, barberId?: number }} filter
  */
 export function broadcastAudience(filter = {}) {
 	const { scope = 'today', date, until, barberId } = filter;
+
+	if (scope === 'all') {
+		return /** @type {any[]} */ (
+			db
+				.prepare(
+					`SELECT NULL AS appointment_id, NULL AS date, NULL AS time,
+					        NULL AS service, NULL AS barber,
+					        u.id AS user_id, u.name AS client_name,
+					        u.phone AS client_phone, u.email AS client_email
+					 FROM users u
+					 ORDER BY u.name`
+				)
+				.all()
+		);
+	}
 
 	const clauses = ["a.status != 'cancelled'"];
 	/** @type {any[]} */

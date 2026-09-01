@@ -16,6 +16,8 @@
 	let template = $state(untrack(() => form?.template ?? data.template));
 
 	let e = $derived(form?.errors ?? {});
+	// The one scope with no booking behind it — changes what the form can promise.
+	let everyone = $derived(data.filter.scope === 'all');
 	let chars = $derived(template.length);
 	// A GSM-7 text is 160 chars; Cyrillic falls back to UCS-2 at 70.
 	let segments = $derived(Math.max(1, Math.ceil(chars / 70)));
@@ -152,7 +154,8 @@
 						{ value: 'today', label: 'Everyone booked today' },
 						{ value: 'date', label: 'A specific day' },
 						{ value: 'range', label: 'A range of days' },
-						{ value: 'upcoming', label: 'Everyone upcoming' }
+						{ value: 'upcoming', label: 'Everyone upcoming' },
+						{ value: 'all', label: 'Everyone registered — no booking needed' }
 					]}
 				/>
 
@@ -195,7 +198,11 @@
 					></textarea>
 					<div class="mt-1.5 flex flex-wrap justify-between gap-3 text-[0.68rem]">
 						<span class="text-zinc-600">
-							Placeholders: <code class="text-zinc-500">{'{name} {date} {time} {service} {barber}'}</code>
+							{#if everyone}
+								Only <code class="text-zinc-500">{'{name}'}</code> works here — there is no booking behind it
+							{:else}
+								Placeholders: <code class="text-zinc-500">{'{name} {date} {time} {service} {barber}'}</code>
+							{/if}
 						</span>
 						<span class="text-zinc-600 tabular-nums">
 							{chars} chars · {segments} SMS
@@ -238,7 +245,8 @@
 
 			<p class="gothic mt-3 text-4xl text-gold tabular-nums">{data.preview.reachable}</p>
 			<p class="text-[0.7rem] text-zinc-500">
-				reachable of {data.preview.total} booking{data.preview.total === 1 ? '' : 's'}
+				reachable of {data.preview.total}
+				{everyone ? 'client' : 'booking'}{data.preview.total === 1 ? '' : 's'}
 			</p>
 
 			{#if data.preview.unreachable.length > 0}
@@ -247,9 +255,9 @@
 						{data.preview.unreachable.length} without a phone
 					</p>
 					<ul class="mt-2 space-y-1">
-						{#each data.preview.unreachable.slice(0, 6) as u (u.email + u.time)}
+						{#each data.preview.unreachable.slice(0, 6) as u (u.email + (u.time ?? ''))}
 							<li class="truncate text-[0.7rem] text-zinc-600">
-								{u.name} · {u.date} {u.time}
+								{u.name}{u.date ? ` · ${u.date} ${u.time}` : ''}
 							</li>
 						{/each}
 					</ul>

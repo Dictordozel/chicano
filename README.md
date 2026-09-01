@@ -154,9 +154,13 @@ than delivered late — nobody wants yesterday's reminder at breakfast.
 A client with no phone number is recorded as `skipped` with the reason, not silently ignored:
 the broadcast screen lists exactly who needs a phone call instead.
 
-**The broadcast** (`/admin/messages`) picks an audience — today, one day, a range, or
-everything upcoming, optionally narrowed to one barber — and shows how many of them are
-reachable before anything is sent. The message is typed into the form and supports
+**The broadcast** (`/admin/messages`) picks an audience — today, one day, a range, everything
+upcoming, or *everyone registered* — optionally narrowed to one barber, and shows how many of
+them are reachable before anything is sent. The last scope ignores the day book entirely and
+reaches every client on file, booking or not: the one for a New Year greeting. It is keyed on
+the client, so somebody with three bookings still gets one message, and because there is no
+booking behind it only `{name}` resolves — a template still carrying `{date}` or `{time}` is
+refused rather than sent with literal braces in it. The message is typed into the form and supports
 `{name} {date} {time} {service} {barber}`; a character counter shows how many SMS it will
 cost (Cyrillic is 70 characters per part, not 160). Sending requires typing the recipient
 count by hand. Reminder wording lives in `src/lib/server/notifications.js`.

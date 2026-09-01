@@ -6,6 +6,7 @@ import {
 	TEMPLATES,
 	LEAD_TIMES,
 	previewBroadcast,
+	unresolvablePlaceholders,
 	sendBroadcast,
 	listOutbox,
 	outboxStats,
@@ -14,7 +15,7 @@ import {
 } from '$lib/server/notifications.js';
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
-const SCOPES = ['today', 'date', 'range', 'upcoming'];
+const SCOPES = ['today', 'date', 'range', 'upcoming', 'all'];
 
 /** Reads the audience filter out of the URL, so a preview is shareable. */
 function readFilter(params) {
@@ -30,7 +31,9 @@ export function load({ locals, url }) {
 	requireAdmin(locals, url);
 
 	const filter = readFilter(url.searchParams);
-	const template = url.searchParams.get('template') || TEMPLATES.broadcast_default;
+	// 'all' has no booking behind it, so it gets a greeting rather than an outage notice.
+	const fallback = filter.scope === 'all' ? TEMPLATES.broadcast_all : TEMPLATES.broadcast_default;
+	const template = url.searchParams.get('template') || fallback;
 	const preview = previewBroadcast(filter, template);
 
 	return {
@@ -75,6 +78,22 @@ export const actions = {
 
 		if (template.length < 10) {
 			return fail(400, { errors: { template: 'Write the message first.' }, template });
+		}
+
+		// "Everyone" has no booking attached, so {date} and friends would go out
+		// as literal braces. Refuse rather than text that to the whole list.
+		if (filter.scope === 'all') {
+			const stray = unresolvablePlaceholders(template);
+			if (stray.length) {
+				return fail(400, {
+					errors: {
+						template: `Sending to everyone has no booking behind it, so ${stray
+							.map((p) => `{${p}}`)
+							.join(', ')} would arrive as-is. Remove ${stray.length === 1 ? 'it' : 'them'} or narrow the audience.`
+					},
+					template
+				});
+			}
 		}
 
 		const preview = previewBroadcast(filter, template);
