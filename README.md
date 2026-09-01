@@ -3,6 +3,20 @@
 Booking and shop prototype for a barbershop, built with **SvelteKit 2 / Svelte 5 (runes)**,
 **Tailwind CSS v4** and **SQLite** (`better-sqlite3`).
 
+## Demo
+
+There is no hosted demo yet — the fastest way to see it is to run it locally, which takes
+about a minute:
+
+```bash
+git clone https://github.com/Dictordozel/chicano.git
+cd chicano && npm install && npm run dev     # http://localhost:5173
+```
+
+The database seeds itself on first boot: 8 services, 4 barbers, 6 products and two weeks of
+partly-booked slots. Sign in with any email — there are no passwords. For the back office go
+to `/admin` and enter the passcode (`chicano` by default).
+
 ## Run
 
 ```bash
