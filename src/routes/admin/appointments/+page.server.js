@@ -24,7 +24,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
 /** Days of availability preloaded for the slot picker. */
-const WINDOW = 30;
+const WINDOW = 60;
 
 /** @type {import('./$types').PageServerLoad} */
 export function load({ locals, url }) {

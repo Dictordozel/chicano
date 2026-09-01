@@ -458,10 +458,13 @@ export function addDays(iso, n) {
 	return toISODate(new Date(y, m - 1, d + n));
 }
 
-/** Fourteen bookable days starting today. */
+/** How far ahead a client may book for themselves. */
+export const BOOKING_WINDOW_DAYS = 60;
+
+/** The bookable window, starting today. */
 export function bookableDates() {
 	const start = today();
-	return Array.from({ length: 14 }, (_, i) => addDays(start, i));
+	return Array.from({ length: BOOKING_WINDOW_DAYS }, (_, i) => addDays(start, i));
 }
 
 seed();

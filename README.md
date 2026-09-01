@@ -90,7 +90,7 @@ step. Set `ADMIN_PASSCODE` to something of your own, and do not put real client 
 | Route      | What it does |
 |------------|--------------|
 | `/`        | Landing page — hero, price list, crew, shop teaser |
-| `/booking` | Service → barber → date → time → details, with a confirmation panel |
+| `/booking` | Service → barber → date → time → details, with a confirmation panel. A rail covers the next fortnight for impulse bookings; a date field reaches the rest of the 60-day window |
 | `/shop`    | Product catalogue with category filters, detail modal, cart and Ozon links |
 | `/cart`    | Quantity steppers, removal, simulated checkout |
 | `/crew`    | Barber profiles with today's free-slot count |

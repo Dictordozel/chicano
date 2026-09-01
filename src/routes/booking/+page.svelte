@@ -50,6 +50,10 @@
 	let barber = $derived(data.barbers.find((b) => b.id === barberId));
 	let freeToday = $derived(data.availability[barberId]?.[date] ?? []);
 
+	// The rail is the quick fortnight; the date field covers the rest of the window.
+	let railDates = $derived(data.dates.slice(0, data.railDays));
+	let beyondRail = $derived(Boolean(date) && !railDates.includes(date));
+
 	let ready = $derived(
 		Boolean(serviceId && barberId && date && time) &&
 			(Boolean(data.user) || (guest.name.trim().length >= 2 && guest.email.includes('@')))
@@ -254,9 +258,27 @@
 					Choose a day
 				</p>
 
+				<!--
+					The rail covers the fortnight people actually book on impulse.
+					Anything further out is reached through this field rather than by
+					flicking through sixty cards.
+				-->
+				<label class="mt-4 flex flex-wrap items-center gap-2.5 text-[0.8rem] text-zinc-500">
+					<span class="whitespace-nowrap">Booking further ahead?</span>
+					<input
+						type="date"
+						class="field !w-auto !py-1.5 !text-[0.85rem]"
+						min={data.dates[0]}
+						max={data.dates[data.dates.length - 1]}
+						bind:value={date}
+						aria-label="Pick a date up to {data.windowDays} days ahead"
+					/>
+					<span class="text-[0.75rem] text-zinc-600">up to {data.windowDays} days</span>
+				</label>
+
 				<!-- Horizontal rail: two weeks of days, thumb-scrollable on a phone -->
 				<div class="mt-6 flex snap-x gap-2 overflow-x-auto pb-3">
-					{#each data.dates as d, i (d)}
+					{#each railDates as d, i (d)}
 						{@const free = freeCount(d)}
 						<!--
 							A full day is dimmed, never faded out: the date and the word "full"
@@ -293,8 +315,12 @@
 						</button>
 					{/each}
 				</div>
-				<p class="mt-1 text-[0.85rem] text-zinc-600">
+				<!-- A day picked beyond the rail has no highlighted card, so say it plainly. -->
+				<p class="mt-1 text-[0.85rem] {beyondRail ? 'text-gold' : 'text-zinc-600'}">
 					{fmt(date, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
+					{#if beyondRail}
+						<span class="text-zinc-500">— picked from the calendar</span>
+					{/if}
 				</p>
 			</fieldset>
 

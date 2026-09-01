@@ -8,7 +8,8 @@ import {
 	getAppointment,
 	findOrCreateUser,
 	createSession,
-	TIME_SLOTS
+	TIME_SLOTS,
+	BOOKING_WINDOW_DAYS
 } from '$lib/server/db.js';
 import { SESSION_COOKIE } from '$lib/auth.js';
 import { syncReminders } from '$lib/server/notifications.js';
@@ -19,18 +20,24 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export function load({ locals, url }) {
 	const barbers = /** @type {any[]} */ (listBarbers());
 
-	// Whole two-week grid for every barber up front: the picker then switches
+	// The whole window for every barber up front: the picker then switches
 	// barber and date instantly, with no extra round-trip on a phone connection.
 	/** @type {Record<number, Record<string, string[]>>} */
 	const availability = {};
 	for (const b of barbers) availability[b.id] = availabilityFor(b.id);
 
+	const dates = bookableDates();
+
 	return {
 		services: listServices(),
 		barbers,
 		availability,
-		dates: bookableDates(),
+		dates,
+		// The rail is for booking on impulse; anything further out is reached
+		// through the date field rather than by flicking through sixty cards.
+		railDays: 14,
 		slots: TIME_SLOTS,
+		windowDays: BOOKING_WINDOW_DAYS,
 		preselect: url.searchParams.get('service')
 	};
 }
@@ -50,7 +57,8 @@ export const actions = {
 		const errors = {};
 		if (!serviceId) errors.service = 'Pick a service.';
 		if (!barberId) errors.barber = 'Pick a barber.';
-		if (!bookableDates().includes(date)) errors.date = 'Pick a day within the next two weeks.';
+		if (!bookableDates().includes(date))
+			errors.date = `Pick a day within the next ${BOOKING_WINDOW_DAYS} days.`;
 		if (!TIME_SLOTS.includes(time)) errors.time = 'Pick a time.';
 
 		// Signed out? The same form doubles as sign-up — nobody re-types a booking.
