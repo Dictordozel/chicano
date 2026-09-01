@@ -1,0 +1,15 @@
+node_modules
+.svelte-kit
+build
+.env
+.env.*
+!.env.example
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+.DS_Store
+
+# Editors
+.idea/
+.vscode/

@@ -1,0 +1,29 @@
+{
+	"name": "chicano-barbershop",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"start": "node build",
+		"preview": "vite preview",
+		"db:reset": "node scripts/reset-db.js"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-node": "^5.5.7",
+		"@sveltejs/kit": "^2.70.3",
+		"@sveltejs/vite-plugin-svelte": "^7.3.0",
+		"@tailwindcss/vite": "^4.3.3",
+		"svelte": "^5.57.0",
+		"tailwindcss": "^4.3.3",
+		"vite": "^8.2.2"
+	},
+	"dependencies": {
+		"better-sqlite3": "^13.0.3"
+	},
+	"engines": {
+		"node": ">=20"
+	},
+	"description": "Booking and shop prototype for the Chicano barbershop — SvelteKit 5, Tailwind v4, SQLite."
+}

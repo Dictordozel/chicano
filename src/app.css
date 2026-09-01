@@ -1,0 +1,214 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Chicano design tokens (Tailwind v4 — CSS-first config, no JS config)
+   ------------------------------------------------------------------ */
+@theme {
+	/* Surfaces */
+	--color-ink: #09090b; /* page background — deepest black */
+	--color-ink-soft: #0e0e11; /* raised panels */
+
+	/* Noble gold accent */
+	--color-gold: #d4af37;
+	--color-gold-bright: #f0d264;
+	--color-gold-deep: #8f7423;
+
+	/* Blood accent used sparingly for tattoo-flash details */
+	--color-flash: #8b1c1c;
+
+	/* Typography */
+	--font-gothic: 'UnifrakturMaguntia', 'Times New Roman', serif;
+	--font-display: 'Oswald', 'Arial Narrow', sans-serif;
+	--font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+	/* Motion */
+	--ease-chicano: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------ */
+@layer base {
+	html {
+		-webkit-tap-highlight-color: transparent;
+		scroll-behavior: smooth;
+	}
+
+	body {
+		background-color: var(--color-ink);
+		font-family: var(--font-sans);
+		/* faint tattoo-parlour paper grain + a low gold vignette */
+		background-image:
+			radial-gradient(
+				ellipse 90% 55% at 50% -10%,
+				color-mix(in oklab, var(--color-gold) 11%, transparent),
+				transparent 70%
+			),
+			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+		background-attachment: fixed;
+	}
+
+	::selection {
+		background: var(--color-gold);
+		color: #000;
+	}
+
+	/* Focus ring — gold, always visible for keyboard users */
+	:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+		outline: 2px solid var(--color-gold);
+		outline-offset: 2px;
+		border-radius: 2px;
+	}
+
+	/* Dark, slim scrollbar so the chrome does not break the mood */
+	* {
+		scrollbar-width: thin;
+		scrollbar-color: var(--color-gold-deep) transparent;
+	}
+}
+
+/* ------------------------------------------------------------------
+   Component utilities
+   ------------------------------------------------------------------ */
+@utility gothic {
+	font-family: var(--font-gothic);
+	font-weight: 400;
+	letter-spacing: 0.01em;
+	line-height: 1.05;
+}
+
+@utility display {
+	font-family: var(--font-display);
+	text-transform: uppercase;
+	letter-spacing: 0.18em;
+}
+
+/* Thin engraved gold rule used between sections */
+@utility rule-gold {
+	background-image: linear-gradient(
+		90deg,
+		transparent,
+		color-mix(in oklab, var(--color-gold) 60%, transparent),
+		transparent
+	);
+	height: 1px;
+}
+
+/* Gold foil text for headline accents */
+@utility foil {
+	background-image: linear-gradient(
+		100deg,
+		var(--color-gold-deep) 0%,
+		var(--color-gold-bright) 38%,
+		var(--color-gold) 55%,
+		var(--color-gold-deep) 100%
+	);
+	background-clip: text;
+	color: transparent;
+	-webkit-text-fill-color: transparent;
+}
+
+@layer components {
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		padding: 0.75rem 1.5rem;
+		font-family: var(--font-display);
+		font-size: 0.75rem;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.18em;
+		border: 1px solid var(--color-zinc-800);
+		transition:
+			color 200ms var(--ease-chicano),
+			background-color 200ms var(--ease-chicano),
+			border-color 200ms var(--ease-chicano),
+			transform 200ms var(--ease-chicano);
+		cursor: pointer;
+	}
+
+	.btn:disabled {
+		opacity: 0.4;
+		cursor: not-allowed;
+	}
+
+	.btn-gold {
+		background-color: var(--color-gold);
+		border-color: var(--color-gold);
+		color: #0a0a0a;
+	}
+
+	.btn-gold:not(:disabled):hover {
+		background-color: var(--color-gold-bright);
+		border-color: var(--color-gold-bright);
+		transform: translateY(-1px);
+	}
+
+	.btn-ghost {
+		background-color: transparent;
+		color: var(--color-zinc-300);
+	}
+
+	.btn-ghost:not(:disabled):hover {
+		border-color: var(--color-gold);
+		color: var(--color-gold);
+	}
+
+	.field {
+		width: 100%;
+		background-color: rgb(0 0 0 / 0.4);
+		border: 1px solid var(--color-zinc-800);
+		padding: 0.75rem 1rem;
+		color: var(--color-zinc-100);
+		font-size: 0.9375rem;
+		transition:
+			border-color 200ms var(--ease-chicano),
+			background-color 200ms var(--ease-chicano);
+	}
+
+	.field::placeholder {
+		color: var(--color-zinc-600);
+	}
+
+	.field:focus {
+		border-color: var(--color-gold);
+		background-color: rgb(0 0 0 / 0.6);
+	}
+
+	.label {
+		display: block;
+		font-family: var(--font-display);
+		font-size: 0.625rem;
+		text-transform: uppercase;
+		letter-spacing: 0.22em;
+		color: var(--color-zinc-500);
+		margin-bottom: 0.5rem;
+	}
+
+	.card {
+		background-color: color-mix(in oklab, var(--color-zinc-900) 40%, transparent);
+		border: 1px solid var(--color-zinc-800);
+		transition:
+			border-color 250ms var(--ease-chicano),
+			transform 250ms var(--ease-chicano);
+	}
+
+	.card-hover:hover {
+		border-color: color-mix(in oklab, var(--color-gold) 55%, transparent);
+		transform: translateY(-2px);
+	}
+}
+
+/* Respect users who ask for less motion */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
