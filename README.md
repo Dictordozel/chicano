@@ -92,9 +92,13 @@ gzip_types text/html application/javascript application/json text/css;
 gzip_min_length 1024;
 ```
 
-Measured on a throttled phone (1.6 Mbps, 150 ms RTT, 4× CPU slowdown), the remaining weight is
-mostly Google Fonts: 75 KB across three families, render-blocking and on a third-party origin.
-Self-hosting them, or dropping the weights that are not used, is the next thing worth doing.
+Fonts are self-hosted from `static/fonts`, so nothing on the page reaches a third-party origin.
+Only the weights the app uses and only the Latin and Cyrillic subsets are shipped; `unicode-range`
+means a browser fetches two or three files, not nine. Regenerate with `node scripts/fetch-fonts.mjs`
+after changing weights.
+
+Measured on a throttled phone (1.6 Mbps, 150 ms RTT, 4× CPU slowdown), dropping the Google Fonts
+stylesheet took first paint from 1980 ms to 1032 ms and full load from 3879 ms to 1761 ms.
 
 **Before showing it to anyone outside the shop:** sign-in is simulated and there is no payment
 step. Set `ADMIN_PASSCODE` to something of your own, and do not put real client data in it.

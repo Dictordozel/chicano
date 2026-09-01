@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './fonts.css';
 
 /* ------------------------------------------------------------------
    Chicano design tokens (Tailwind v4 — CSS-first config, no JS config)
