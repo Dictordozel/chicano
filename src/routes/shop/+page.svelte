@@ -131,7 +131,7 @@
 						rel="noopener noreferrer"
 						class="display flex items-center justify-center gap-1.5 border-r border-zinc-800 py-3.5 text-[0.75rem] text-zinc-400 transition-colors hover:bg-zinc-900/60 hover:text-gold"
 					>
-						Купить на Ozon
+						Buy on Ozon
 						<Icon name="external" size="12" />
 					</a>
 
@@ -142,7 +142,7 @@
 							class="display flex w-full items-center justify-center gap-1.5 py-3.5 text-[0.75rem] text-gold transition-colors hover:bg-gold hover:text-black"
 						>
 							<Icon name="plus" size="12" stroke={2} />
-							В корзину
+							Add to cart
 						</button>
 					</form>
 				</div>
@@ -155,8 +155,8 @@
 	{/if}
 
 	<p class="mt-12 text-center text-[0.9rem] leading-relaxed text-zinc-600">
-		Prototype notice — “В корзину” simulates an order inside the app.
-		“Купить на Ozon” opens the marketplace listing in a new tab.
+		Prototype notice — “Add to cart” simulates an order inside the app.
+		“Buy on Ozon” opens the marketplace listing in a new tab.
 	</p>
 </section>
 
@@ -227,7 +227,7 @@
 						rel="noopener noreferrer"
 						class="btn btn-ghost flex-1"
 					>
-						Купить на Ozon
+						Buy on Ozon
 						<Icon name="external" size="14" />
 					</a>
 
@@ -235,7 +235,7 @@
 						<input type="hidden" name="productId" value={open.id} />
 						<button type="submit" class="btn btn-gold w-full">
 							<Icon name="cart" size="14" />
-							В корзину
+							Add to cart
 						</button>
 					</form>
 				</div>

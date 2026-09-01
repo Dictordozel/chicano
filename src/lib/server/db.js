@@ -280,85 +280,85 @@ const BARBERS = [
 ];
 
 /**
- * Shop catalogue. The first four entries are the client-supplied demo goods —
- * titles, categories, prices, descriptions and marketplace links kept verbatim.
+ * Shop catalogue. The first four are the client-supplied demo goods; prices and marketplace
+ * links are kept verbatim, the copy is translated to match the interface.
  * The last two round out the face-care shelf.
  */
 const PRODUCTS = [
 	{
-		slug: 'suavecito-firme-hold',
-		title: 'Помада для укладки волос Suavecito Firme Hold',
+		slug: 'suavecito-firme-hold-pomade',
+		title: 'Suavecito Firme Hold Pomade',
 		brand: 'Suavecito',
-		category: 'Волосы',
+		category: 'Hair',
 		price: 1650,
-		volume: '113 г',
+		volume: '113 g',
 		description:
-			'Сильная фиксация с умеренным блеском для классических латиноамериканских мужских стрижек. Водорастворимая.',
+			'Firm hold with a moderate shine, built for the classic Latin cuts. Water-soluble, so it washes out clean.',
 		url: 'https://ozon.ru',
 		badge: 'Slick Back',
 		sort_order: 1
 	},
 	{
-		slug: 'morgans-beard-oil',
-		title: 'Масло для бороды и усов Morgan’s Beard Oil',
+		slug: 'morgans-beard-moustache-oil',
+		title: 'Morgan’s Beard & Moustache Oil',
 		brand: 'Morgan’s',
-		category: 'Борода',
+		category: 'Beard',
 		price: 2100,
-		volume: '50 мл',
+		volume: '50 ml',
 		description:
-			'Премиальное масло для смягчения жесткой щетины и ухода за кожей лица. Аромат бергамота и сандала.',
+			'Premium oil that softens coarse stubble and looks after the skin beneath it. Bergamot and sandalwood.',
 		url: 'https://ozon.ru',
 		badge: 'Premium',
 		sort_order: 2
 	},
 	{
-		slug: 'reuzel-extreme-hold-matte',
-		title: 'Глина-мастика для волос Reuzel Extreme Hold Matte',
+		slug: 'reuzel-extreme-hold-matte-clay',
+		title: 'Reuzel Extreme Hold Matte Clay',
 		brand: 'Reuzel',
-		category: 'Волосы',
+		category: 'Hair',
 		price: 1980,
-		volume: '113 г',
+		volume: '113 g',
 		description:
-			'Максимальная матовая фиксация без лишнего блеска для брутального текстурного стиля.',
+			'Maximum matte hold with no shine at all, for a brutal textured finish.',
 		url: 'https://ozon.ru',
 		badge: 'Matte',
 		sort_order: 3
 	},
 	{
-		slug: 'clubman-pinaud-2in1',
-		title: 'Бальзам для бороды Clubman Pinaud 2-in-1',
+		slug: 'clubman-pinaud-2-in-1-beard-balm',
+		title: 'Clubman Pinaud 2-in-1 Beard Balm',
 		brand: 'Clubman Pinaud',
-		category: 'Лицо и борода',
+		category: 'Face & beard',
 		price: 1250,
-		volume: '59 мл',
+		volume: '59 ml',
 		description:
-			'Увлажняет кожу лица и делает бороду послушной, убирая пушистость. Классический аромат барбершопа.',
+			'Moisturises the skin and tames the beard, taking the frizz out of it. The classic barbershop scent.',
 		url: 'https://ozon.ru',
 		badge: 'Classic',
 		sort_order: 4
 	},
 	{
-		slug: 'proraso-pre-shave-green',
-		title: 'Крем до бритья Proraso Pre-Shave Green',
+		slug: 'proraso-pre-shave-cream-green',
+		title: 'Proraso Pre-Shave Cream, Green',
 		brand: 'Proraso',
-		category: 'Лицо',
+		category: 'Face',
 		price: 1390,
-		volume: '100 мл',
+		volume: '100 ml',
 		description:
-			'Эвкалипт и ментол поднимают щетину и охлаждают кожу перед бритьем опасной бритвой. Барберская классика с 1948 года.',
+			'Eucalyptus and menthol lift the stubble and cool the skin before a straight razor. A barbershop staple since 1948.',
 		url: 'https://ozon.ru',
 		badge: null,
 		sort_order: 5
 	},
 	{
-		slug: 'baxter-after-shave-balm',
-		title: 'Бальзам после бритья Baxter of California',
+		slug: 'baxter-of-california-after-shave-balm',
+		title: 'Baxter of California After-Shave Balm',
 		brand: 'Baxter of California',
-		category: 'Лицо',
+		category: 'Face',
 		price: 2450,
-		volume: '120 мл',
+		volume: '120 ml',
 		description:
-			'Успокаивает раздражение после бритья, не оставляет липкой пленки. Алоэ, аллантоин и глицерин.',
+			'Calms the burn after a shave without leaving a sticky film. Aloe, allantoin and glycerin.',
 		url: 'https://ozon.ru',
 		badge: null,
 		sort_order: 6

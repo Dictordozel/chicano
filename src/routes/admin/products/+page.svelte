@@ -181,7 +181,7 @@
 						name="title"
 						label="Title"
 						required
-						placeholder="Помада для укладки волос…"
+						placeholder="Suavecito Firme Hold Pomade"
 						value={v.title}
 						error={e.title}
 					/>
@@ -195,14 +195,14 @@
 							value={v.brand}
 							error={e.brand}
 						/>
-						<Field name="volume" label="Volume" placeholder="113 г" value={v.volume} />
+						<Field name="volume" label="Volume" placeholder="113 g" value={v.volume} />
 					</div>
 
 					<Field
 						name="category"
 						label="Category"
 						required
-						placeholder="Волосы"
+						placeholder="Hair"
 						value={v.category}
 						error={e.category}
 						hint="In use: {data.categories.join(', ')}"
@@ -214,7 +214,7 @@
 						type="textarea"
 						required
 						rows={3}
-						placeholder="Сильная фиксация с умеренным блеском…"
+						placeholder="Firm hold with a moderate shine…"
 						value={v.description}
 						error={e.description}
 					/>

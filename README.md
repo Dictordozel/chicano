@@ -123,7 +123,7 @@ step. Set `ADMIN_PASSCODE` to something of your own, and do not put real client 
 | `/admin` | Counts, today's chairs, what is coming up |
 | `/admin/services` | List, add, edit and delete haircuts / beard work |
 | `/admin/barbers` | List, add, edit and delete barbers — a new one opens 11 daily slots at once |
-| `/admin/products` | List, add, edit and delete shop goods, Cyrillic titles included |
+| `/admin/products` | List, add, edit and delete shop goods |
 | `/admin/appointments` | Day book for every barber; create, edit, cancel, restore and delete bookings |
 | `/admin/clients` | Search, add, edit and delete clients; grant or revoke back-office rights |
 | `/admin/messages` | SMS outbox, and the force-majeure broadcast |
