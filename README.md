@@ -17,6 +17,28 @@ The database seeds itself on first boot: 8 services, 4 barbers, 6 products and t
 partly-booked slots. Sign in with any email — there are no passwords. For the back office go
 to `/admin` and enter the passcode (`chicano` by default).
 
+## Screenshots
+
+![Landing page — gothic wordmark, gold foil, price list below](docs/screenshots/home.png)
+
+| Booking — service, barber, day rail, slot grid | Shop — catalogue with category filters |
+| --- | --- |
+| [![Booking](docs/screenshots/booking.png)](docs/screenshots/booking.png) | [![Shop](docs/screenshots/shop.png)](docs/screenshots/shop.png) |
+| **Product card** — marketplace link and in-app cart | **Price list** on the landing page |
+| [![Product card](docs/screenshots/shop-product.png)](docs/screenshots/shop-product.png) | [![Services](docs/screenshots/services.png)](docs/screenshots/services.png) |
+
+**Back office** — the day book, and the catalogue editor beside it
+
+| Bookings | Products |
+| --- | --- |
+| [![Admin bookings](docs/screenshots/admin.png)](docs/screenshots/admin.png) | [![Admin products](docs/screenshots/admin-products.png)](docs/screenshots/admin-products.png) |
+
+**Mobile-first** — clients book from a phone, so that is where the layout starts
+
+| Landing | Booking | Shop |
+| --- | --- | --- |
+| <img src="docs/screenshots/mobile-home.png" width="240" alt="Landing page on a phone"> | <img src="docs/screenshots/mobile-booking.png" width="240" alt="Booking on a phone"> | <img src="docs/screenshots/mobile-shop.png" width="240" alt="Shop on a phone"> |
+
 ## Run
 
 ```bash
