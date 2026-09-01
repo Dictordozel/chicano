@@ -43,10 +43,10 @@
 <header
 	class="sticky top-0 z-50 border-b border-zinc-800 bg-ink/85 backdrop-blur-md supports-[backdrop-filter]:bg-ink/70"
 >
-	<div class="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:h-20 sm:px-6">
+	<div class="mx-auto flex h-20 max-w-6xl items-center gap-3 px-4 sm:h-24 sm:px-6">
 		<!-- Wordmark -->
 		<a href="/" class="group flex items-baseline gap-2" aria-label="Chicano Barbershop, home">
-			<span class="gothic foil text-2xl leading-none sm:text-3xl">Chicano</span>
+			<span class="gothic foil text-4xl leading-none sm:text-5xl">Chicano</span>
 			<span
 				class="display hidden text-[0.75rem] text-zinc-600 transition-colors group-hover:text-gold sm:inline"
 			>
@@ -133,7 +133,7 @@
 	<div
 		id="mobile-menu"
 		transition:fly={{ y: -12, duration: 200 }}
-		class="fixed inset-x-0 top-16 z-40 border-b border-zinc-800 bg-ink/98 backdrop-blur-md md:hidden"
+		class="fixed inset-x-0 top-20 z-40 border-b border-zinc-800 bg-ink/98 backdrop-blur-md md:hidden"
 	>
 		<nav class="flex flex-col px-4 py-2" aria-label="Mobile">
 			{#each links as link (link.href)}

@@ -37,7 +37,7 @@
 		</div>
 
 		{#if data.isAdmin}
-			<nav class="-mx-4 flex snap-x gap-1 overflow-x-auto px-4 sm:mx-0 sm:px-0" aria-label="Admin">
+			<nav class="flex snap-x gap-1 overflow-x-auto" aria-label="Admin">
 				{#each tabs as tab (tab.href)}
 					<a
 						href={tab.href}

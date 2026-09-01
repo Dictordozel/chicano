@@ -255,7 +255,7 @@
 				</p>
 
 				<!-- Horizontal rail: two weeks of days, thumb-scrollable on a phone -->
-				<div class="-mx-4 mt-6 flex snap-x gap-2 overflow-x-auto px-4 pb-3 sm:mx-0 sm:px-0">
+				<div class="mt-6 flex snap-x gap-2 overflow-x-auto pb-3">
 					{#each data.dates as d, i (d)}
 						{@const free = freeCount(d)}
 						<!--

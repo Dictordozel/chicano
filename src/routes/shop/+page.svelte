@@ -57,7 +57,7 @@
 	</div>
 
 	<!-- ------------------------------------------------------- filters -->
-	<div class="mt-10 -mx-4 flex snap-x gap-2 overflow-x-auto px-4 pb-2 sm:mx-0 sm:justify-center sm:px-0">
+	<div class="mt-10 flex snap-x gap-2 overflow-x-auto pb-2 sm:justify-center">
 		{#each [{ key: 'all', label: 'Everything' }, ...data.categories.map((c) => ({ key: c, label: c }))] as chip (chip.key)}
 			<button
 				type="button"
