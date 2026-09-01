@@ -1,5 +1,6 @@
 import { redirect, fail } from '@sveltejs/kit';
 import { listAppointments, cancelAppointment, listOrders, today } from '$lib/server/db.js';
+import { syncReminders } from '$lib/server/notifications.js';
 
 /** @type {import('./$types').PageServerLoad} */
 export function load({ locals }) {
@@ -26,6 +27,9 @@ export const actions = {
 		const form = await request.formData();
 		const changed = cancelAppointment(Number(form.get('id')), locals.user.id);
 		if (!changed) return fail(404, { message: 'Booking not found.' });
+
+		// A cancelled slot must not still text the client.
+		syncReminders(Number(form.get('id')));
 
 		return { cancelled: true };
 	}

@@ -11,7 +11,8 @@
 		{ href: '/admin/barbers', label: 'Barbers', icon: 'razor' },
 		{ href: '/admin/products', label: 'Products', icon: 'bag' },
 		{ href: '/admin/appointments', label: 'Bookings', icon: 'calendar' },
-		{ href: '/admin/clients', label: 'Clients', icon: 'user' }
+		{ href: '/admin/clients', label: 'Clients', icon: 'user' },
+		{ href: '/admin/messages', label: 'Messages', icon: 'phone' }
 	];
 
 	let path = $derived(page.url.pathname);

@@ -18,6 +18,7 @@ import {
 	TIME_SLOTS,
 	db
 } from '$lib/server/db.js';
+import { syncReminders } from '$lib/server/notifications.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
@@ -107,6 +108,8 @@ export const actions = {
 			return fail(409, { errors: { time: 'That chair is already taken at this time.' }, values });
 		}
 
+		syncReminders(id);
+
 		return { created: { id, client: client.name, date: values.date, time: values.time } };
 	},
 
@@ -149,6 +152,9 @@ export const actions = {
 			});
 		}
 
+		// The slot moved, so the day-before and hour-before texts move too.
+		syncReminders(id);
+
 		redirect(303, '/admin/appointments');
 	},
 
@@ -157,6 +163,8 @@ export const actions = {
 		const form = await request.formData();
 		const changed = setAppointmentStatus(Number(form.get('id')), 'cancelled');
 		if (!changed) return fail(404, { message: 'Booking not found.' });
+
+		syncReminders(Number(form.get('id')));
 		return { cancelled: true };
 	},
 
@@ -176,6 +184,7 @@ export const actions = {
 		}
 
 		setAppointmentStatus(id, 'confirmed');
+		syncReminders(id);
 		return { restored: true };
 	},
 

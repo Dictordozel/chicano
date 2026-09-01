@@ -11,6 +11,7 @@ import {
 	TIME_SLOTS
 } from '$lib/server/db.js';
 import { SESSION_COOKIE } from '$lib/auth.js';
+import { syncReminders } from '$lib/server/notifications.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -97,6 +98,9 @@ export const actions = {
 				values: { serviceId, barberId, date, time, note }
 			});
 		}
+
+		// Queue the day-before and hour-before texts for this slot.
+		syncReminders(id);
 
 		return { success: true, appointment: getAppointment(id) };
 	}

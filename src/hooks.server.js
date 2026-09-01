@@ -1,5 +1,11 @@
+import { building } from '$app/environment';
 import { userFromSession } from '$lib/server/db.js';
 import { SESSION_COOKIE, CART_COOKIE } from '$lib/auth.js';
+import { startNotificationWorker } from '$lib/server/notifications.js';
+
+// One drain loop per server process. Skipped during build, where there is no
+// server to run it.
+if (!building) startNotificationWorker();
 
 /**
  * Resolves the simulated session and the (guest-friendly) cart key on every

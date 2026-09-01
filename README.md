@@ -108,6 +108,7 @@ step. Set `ADMIN_PASSCODE` to something of your own, and do not put real client 
 | `/admin/products` | List, add, edit and delete shop goods, Cyrillic titles included |
 | `/admin/appointments` | Day book for every barber; create, edit, cancel, restore and delete bookings |
 | `/admin/clients` | Search, add, edit and delete clients; grant or revoke back-office rights |
+| `/admin/messages` | SMS outbox, and the force-majeure broadcast |
 | `/admin/unlock` | Passcode gate that grants back-office rights |
 
 Access is `signed in` + `users.is_admin`. A signed-in visitor unlocks the flag once by
@@ -139,9 +140,49 @@ into `appointments.price` when it is made, and an order freezes its line items a
 Moving a booking keeps that quote; swapping it to a *different* service re-quotes at the new
 service's current price. A live cart, by contrast, always reflects the current product price.
 
+## SMS
+
+Two reminders per booking — 24 h and 1 h before — plus a broadcast for the day the power
+goes out and everyone has to be moved.
+
+Everything queues into one `notifications` table that a worker drains once a minute, so a
+message is never sent twice and never lost while the server is down. Reminders are queued
+when a booking is made and follow it: move the slot and they move with it, cancel and they
+are withdrawn, restore and they come back. A reminder more than 6 h overdue is dropped rather
+than delivered late — nobody wants yesterday's reminder at breakfast.
+
+A client with no phone number is recorded as `skipped` with the reason, not silently ignored:
+the broadcast screen lists exactly who needs a phone call instead.
+
+**The broadcast** (`/admin/messages`) picks an audience — today, one day, a range, or
+everything upcoming, optionally narrowed to one barber — and shows how many of them are
+reachable before anything is sent. The message is typed into the form and supports
+`{name} {date} {time} {service} {barber}`; a character counter shows how many SMS it will
+cost (Cyrillic is 70 characters per part, not 160). Sending requires typing the recipient
+count by hand. Reminder wording lives in `src/lib/server/notifications.js`.
+
+### Going live
+
+Out of the box the provider is **simulated**: messages are queued and recorded in the outbox,
+and nothing leaves the building. That is enough to exercise the whole schedule. For real
+delivery, set the environment variables below — an account with the gateway is on you.
+
+| Variable | Purpose |
+|----------|---------|
+| `SMS_PROVIDER` | `smsru` to send for real; anything else keeps the simulator |
+| `SMS_API_KEY` | Gateway API key |
+| `SMS_FROM` | Optional sender name |
+
+Another gateway means one more branch in `deliver` inside `src/lib/server/sms.js`; nothing
+else in the app knows which one is in use.
+
+```bash
+node scripts/test-notifications.mjs   # 18 checks against a running dev server
+```
+
 ## Data model
 
-`users` · `sessions` · `services` · `barbers` · `appointments` · `products` · `cart_items` · `orders`
+`users` · `sessions` · `services` · `barbers` · `appointments` · `products` · `cart_items` · `orders` · `notifications`
 
 - A `UNIQUE (barber_id, date, time)` index on `appointments` is what actually prevents
   double booking — the UI check is only the fast path.
